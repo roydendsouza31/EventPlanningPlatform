@@ -1,5 +1,5 @@
 # Event Planning Platform
----
+
 ## Group Members
 - Royden Dsouza
 - Rahul Bandekar
