@@ -1,6 +1,6 @@
 # Event Planning Platform
 ---
-##Group Members
+## Group Members
 - Royden Dsouza
 - Rahul Bandekar
 - Alishka Fernandes
