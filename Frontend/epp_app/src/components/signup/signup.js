@@ -25,7 +25,7 @@ const Signup = () => {
     if (name && surname && email && password) {
       axios.post("http://localhost:3000/signup", user)
         .then(res => {
-          console.log(res.data); // Log the response data
+          console.log(res.data);
         })
         .catch(error => {
           console.error("Error signing up:", error);
