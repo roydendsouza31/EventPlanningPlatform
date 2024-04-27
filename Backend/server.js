@@ -1,3 +1,18 @@
+// Connect to MongoDB
+const mongoose = require("mongoose");
+const connectionString = "mongodb://localhost:27017/creationsgoa";
+
+function main() {
+  try {
+    mongoose.connect(connectionString);
+    console.log("Connected to mongodb successfully!");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+main();
+
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
@@ -34,9 +49,10 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/profile", profileRouter);
 
-app.get("/", (req, res) => {
-  res.redirect("/login");
-});
+// app.get("/", (req, res) => {
+//    res.redirect("/login");
+ 
+// });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

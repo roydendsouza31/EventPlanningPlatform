@@ -19,42 +19,40 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const register = (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post("http://localhost:3000/signup", user); // Adjust the URL to match your server
-      console.log(user);
-
-      console.log(response.data);
-      setUser({
-        firstname: "",
-        lastname: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
-    } catch (error) {
-      console.error("Error signing up:", error);
+    const { name, surname, email, password, confirmPassword } = user;
+    if (name && surname && email && password) {
+      axios.post("http://localhost:3000/signup", user)
+        .then(res => {
+          console.log(res.data); // Log the response data
+        })
+        .catch(error => {
+          console.error("Error signing up:", error);
+        });
+    } else {
+      alert("invalid input");
     }
   };
+  
 
   return (
     <div className="signup">
+     {console.log(user)}
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form > 
         <input
           type="text"
-          name="firstname"
-          value={user.firstname}
+          name="name"
+          value={user.name}
           placeholder="First Name"
           onChange={handleChange}
           required
         ></input>
         <input
           type="text"
-          name="lastname"
-          value={user.lastname}
+          name="surname"
+          value={user.surname}
           placeholder="Last Name"
           onChange={handleChange}
           required
@@ -83,7 +81,7 @@ const Signup = () => {
           onChange={handleChange}
           required
         ></input>
-        <button type="submit" className="button">
+        <button type="submit" className="button" onClick={register}>
           Signup
         </button>
       </form>
