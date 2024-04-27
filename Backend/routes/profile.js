@@ -23,7 +23,7 @@ router.get("/", ensureAuthentication, async (req, res) => {
   }
 });
 
-router.post("/image", async (req, res) => {
+router.post("/image", ensureAuthentication, async (req, res) => {
   const customerId = req.session.customer.id;
   const customer = await CustomerService.find(customerId);
 
@@ -34,7 +34,7 @@ router.post("/image", async (req, res) => {
   await CustomerService.update(customerId, customer);
 
   req.session.customer.image = imageUrl;
-
+  console.log("Image updated successfully!");
   res.send(customer);
 });
 

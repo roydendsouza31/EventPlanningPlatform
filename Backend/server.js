@@ -20,12 +20,7 @@ const cors = require("cors");
 const session = require("express-session");
 const store = new session.MemoryStore();
 
-const {
-  signupRouter,
-  loginRouter,
-  profileRouter,
-  logoutRouter,
-} = require("./routes");
+const { signupRouter, loginRouter, profileRouter } = require("./routes");
 
 const app = express();
 const port = 3000;
@@ -55,9 +50,6 @@ app.use(
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/profile", profileRouter);
-
-// Corrected mounting of logoutRouter
-app.use("/logout", logoutRouter);
 
 app.get("/", (req, res) => {
   res.redirect("/login");
