@@ -1,8 +1,9 @@
 const router = require("express").Router();
-const { UserService } = require("../services");
+const { CustomerService } = require("../services");
 
 function ensureAuthentication(req, res, next) {
   if (req.session.authenticated) {
+    console.log("Authenticated successfully!");
     return next();
   } else {
     res.status(203).send("You're not authorized to view this page");
@@ -11,30 +12,30 @@ function ensureAuthentication(req, res, next) {
 
 router.get("/", ensureAuthentication, async (req, res) => {
   try {
-    const user = req.session.user;
-    if (user) {
-      res.status(200).send(user);
+    const customer = req.session.customer;
+    if (customer) {
+      res.status(200).send(customer);
     } else {
-      res.status(203).send("User not found at this id");
+      res.status(203).send("Customer not found");
     }
   } catch (err) {
-    res.status(203).send("User not found at this id");
+    res.status(203).send("Customer not found");
   }
 });
 
 router.post("/image", async (req, res) => {
-  const userId = req.session.user.id;
-  const user = await UserService.find(userId);
+  const customerId = req.session.customer.id;
+  const customer = await CustomerService.find(customerId);
 
   const imageUrl = req.body.image;
 
-  user.image = imageUrl;
+  customer.image = imageUrl;
 
-  await UserService.update(userId, user);
+  await CustomerService.update(customerId, customer);
 
-  req.session.user.image = imageUrl;
+  req.session.customer.image = imageUrl;
 
-  res.send(user);
+  res.send(customer);
 });
 
 router.post("/logout", (req, res) => {
@@ -42,6 +43,7 @@ router.post("/logout", (req, res) => {
     req.session.destroy();
     res.clearCookie("connect.sid");
     res.status(200).send("ok");
+    console.log("Logged out successfully!");
   } catch (err) {
     res.status(500).send("Something went wrong");
   }

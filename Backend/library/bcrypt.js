@@ -7,7 +7,7 @@ const createHashedPassword = async (password) => {
     return hashedPassword;
   } catch (error) {
     console.error("Error generating hashed password:", error);
-    throw error; // Re-throw the error to handle it outside this function
+    throw error;
   }
 };
 

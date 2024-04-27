@@ -4,10 +4,7 @@ const connectionString = "mongodb://localhost:27017/creationsgoa";
 
 function main() {
   try {
-    mongoose.connect(connectionString, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    mongoose.connect(connectionString);
     console.log("Connected to mongodb successfully!");
   } catch (err) {
     console.log(err);
@@ -15,6 +12,7 @@ function main() {
 }
 
 main();
+
 // Express Server
 
 const express = require("express");
@@ -22,7 +20,12 @@ const cors = require("cors");
 const session = require("express-session");
 const store = new session.MemoryStore();
 
-const { signupRouter, loginRouter, profileRouter } = require("./routes");
+const {
+  signupRouter,
+  loginRouter,
+  profileRouter,
+  logoutRouter,
+} = require("./routes");
 
 const app = express();
 const port = 3000;
@@ -53,11 +56,12 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/profile", profileRouter);
 
+// Corrected mounting of logoutRouter
+app.use("/logout", logoutRouter);
+
 app.get("/", (req, res) => {
   res.redirect("/login");
 });
-
-module.exports = app;
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

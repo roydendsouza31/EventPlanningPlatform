@@ -1,32 +1,21 @@
 const router = require("express").Router();
-const { UserService } = require("../services");
+const { CustomerService } = require("../services");
 const { matchedPassword } = require("../library/bcrypt");
-
-router.get("/", (req, res) => {
-  const user = req.session;
-  console.log(user);
-  if (user) {
-    res.status(200).send(user);
-  } else {
-    res.status(203);
-  }
-});
 
 router.post("/", async (req, res) => {
   try {
     const object = req.body;
 
-    const user = await UserService.findByEmail(object.email);
-    console.log("User found");
+    const customer = await CustomerService.findByEmail(object.email);
 
-    if (user) {
-      const { id, name, surname, email, image } = user;
+    if (customer) {
+      const { id, name, surname, email, image } = customer;
 
-      const matched = await matchedPassword(object.password, user.password);
-      console.log("Password matched");
+      const matched = await matchedPassword(object.password, customer.password);
+
       if (matched) {
         req.session.authenticated = true;
-        req.session.user = {
+        req.session.customer = {
           id,
           name,
           surname,
@@ -34,12 +23,13 @@ router.post("/", async (req, res) => {
           image,
         };
 
-        res.status(200).send(user);
+        console.log("Customer logged in successfully!");
+        res.status(200).send(customer);
       } else {
         res.status(203).send("Incorrect password");
       }
     } else {
-      res.status(203).send("User not found. Please sign up.");
+      res.status(203).send("Customer not found. Please sign up.");
     }
   } catch (err) {
     res.send({ msg: err });

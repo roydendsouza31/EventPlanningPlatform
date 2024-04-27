@@ -1,32 +1,26 @@
 const router = require("express").Router();
 const { createHashedPassword } = require("../library/bcrypt");
-const { UserService } = require("../services");
-
-router.get("/", (req, res) => {
-  res.send("signup page");
-});
+const { CustomerService } = require("../services");
 
 router.post("/", async (req, res) => {
   try {
-    // const object = req.body.user;
     const object = req.body;
-    console.log(object);
 
-    const checkEmail = await UserService.findByEmail(object.email);
+    const checkEmail = await CustomerService.findByEmail(object.email);
 
     if (checkEmail) {
-      console.log("User already exists");
+      console.log("Customer already exists");
       res.status(203).json({ msg: "This email address is already registered" });
     } else {
       const hashedPassword = await createHashedPassword(object.password);
 
       object.password = hashedPassword;
 
-      const user = await UserService.save(object);
+      const customer = await CustomerService.save(object);
 
-      console.log("User created");
+      console.log("Customer created");
 
-      res.status(201).json({ msg: "User created", user });
+      res.status(201).json({ msg: "Customer created", customer });
     }
   } catch (err) {
     res.send({ msg: err });

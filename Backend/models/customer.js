@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
+const CustomerSchema = new mongoose.Schema({
   email: { type: String, required: true, minlength: 2 },
   name: { type: String, required: true, minlength: 1 },
   surname: { type: String, required: true, minlength: 1 },
@@ -8,4 +8,4 @@ const UserSchema = new mongoose.Schema({
   image: { type: String, default: "" },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Customer", CustomerSchema);
