@@ -49,10 +49,10 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/profile", profileRouter);
 
-// app.get("/", (req, res) => {
-//    res.redirect("/login");
+app.get("/", (req, res) => {
+   res.redirect("/login");
  
-// });
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

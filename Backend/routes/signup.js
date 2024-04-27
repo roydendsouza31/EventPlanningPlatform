@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
 
       const customer = await CustomerService.save(object);
 
-      console.log("Customer created");
+      console.log("Customer created,login now");
 
       res.status(201).json({ msg: "Customer created", customer });
     }

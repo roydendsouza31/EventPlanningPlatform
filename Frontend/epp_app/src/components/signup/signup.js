@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./signup.css";
+import {Link} from "react-router-dom"
+
+import { useNavigate } from "react-router-dom"; 
 
 const Signup = () => {
+  
+  const navigate = useNavigate(); 
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -26,6 +31,7 @@ const Signup = () => {
       axios.post("http://localhost:3000/signup", user)
         .then(res => {
           console.log(res.data);
+          navigate("/login")
         })
         .catch(error => {
           console.error("Error signing up:", error);
@@ -86,7 +92,7 @@ const Signup = () => {
         </button>
       </form>
       <p>
-        Already have an account? <a href="/login">Login</a>
+        Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
   );

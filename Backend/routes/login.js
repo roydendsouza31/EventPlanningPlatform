@@ -8,6 +8,8 @@ router.post("/", async (req, res) => {
 
     const customer = await CustomerService.findByEmail(object.email);
 
+    console.log(customer)
+
     if (customer) {
       const { id, name, surname, email, image } = customer;
 
