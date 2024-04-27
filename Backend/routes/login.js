@@ -3,7 +3,8 @@ const { UserService } = require("../services");
 const { matchedPassword } = require("../library/bcrypt");
 
 router.get("/", (req, res) => {
-  const user = req.session.user;
+  const user = req.session;
+  console.log(user);
   if (user) {
     res.status(200).send(user);
   } else {
@@ -13,14 +14,16 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const object = req.body.user;
+    const object = req.body;
 
     const user = await UserService.findByEmail(object.email);
+    console.log("User found");
 
     if (user) {
       const { id, name, surname, email, image } = user;
 
       const matched = await matchedPassword(object.password, user.password);
+      console.log("Password matched");
       if (matched) {
         req.session.authenticated = true;
         req.session.user = {

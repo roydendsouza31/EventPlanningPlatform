@@ -15,6 +15,7 @@ router.post("/", async (req, res) => {
     const checkEmail = await UserService.findByEmail(object.email);
 
     if (checkEmail) {
+      console.log("User already exists");
       res.status(203).json({ msg: "This email address is already registered" });
     } else {
       const hashedPassword = await createHashedPassword(object.password);
@@ -24,7 +25,6 @@ router.post("/", async (req, res) => {
       const user = await UserService.save(object);
 
       console.log("User created");
-      console.log(user);
 
       res.status(201).json({ msg: "User created", user });
     }

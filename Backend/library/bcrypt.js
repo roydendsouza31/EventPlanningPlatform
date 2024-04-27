@@ -12,9 +12,13 @@ const createHashedPassword = async (password) => {
 };
 
 const matchedPassword = async (enteredPassword, registeredPassword) => {
-  const matched = await compare(enteredPassword, registeredPassword);
-
-  return matched;
+  try {
+    const matched = await bcrypt.compare(enteredPassword, registeredPassword);
+    return matched;
+  } catch (error) {
+    console.error("Error comparing passwords:", error);
+    throw error;
+  }
 };
 
 module.exports = { createHashedPassword, matchedPassword };
