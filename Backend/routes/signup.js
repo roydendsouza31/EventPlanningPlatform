@@ -8,7 +8,9 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const object = req.body.user;
+    // const object = req.body.user;
+    const object = req.body;
+    console.log(object);
 
     const checkEmail = await UserService.findByEmail(object.email);
 
@@ -20,6 +22,9 @@ router.post("/", async (req, res) => {
       object.password = hashedPassword;
 
       const user = await UserService.save(object);
+
+      console.log("User created");
+      console.log(user);
 
       res.status(201).json({ msg: "User created", user });
     }

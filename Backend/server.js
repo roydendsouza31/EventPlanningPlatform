@@ -2,11 +2,9 @@
 const mongoose = require("mongoose");
 const connectionString = "mongodb://localhost:27017/creationsgoa";
 
-main();
-
-async function main() {
+function main() {
   try {
-    await mongoose.connect(connectionString, {
+    mongoose.connect(connectionString, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -16,6 +14,7 @@ async function main() {
   }
 }
 
+main();
 // Express Server
 
 const express = require("express");
@@ -36,7 +35,7 @@ app.use(
     credentials: true,
   })
 );
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: "9deacb65f$c4a689c3b$937e1ab$f0a1",
