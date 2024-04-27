@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./signup.css";
 
 const Signup = () => {
   const [user, setUser] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
-    reEnterPassword: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -17,41 +19,77 @@ const Signup = () => {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:3000/signup", user); // Adjust the URL to match your server
+      console.log(user);
+
+      console.log(response.data);
+      setUser({
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
+  };
+
   return (
     <div className="signup">
-      {console.log("user", user)}
       <h1>Sign Up</h1>
-      <input
-        type="text"
-        name="name"
-        value={user.name}
-        placeholder="Your Name"
-        onChange={handleChange}
-      ></input>
-      <input
-        type="text"
-        name="email"
-        value={user.email}
-        placeholder="Your Email"
-        onChange={handleChange}
-      ></input>
-      <input
-        type="password"
-        name="password"
-        value={user.password}
-        placeholder="Your Password"
-        onChange={handleChange}
-      ></input>
-      <input
-        type="password"
-        name="reEnterPassword"
-        value={user.reEnterPassword}
-        placeholder="Re-enter Password"
-        onChange={handleChange}
-      ></input>
-      <div className="button">Signup</div>
-      <div>or</div>
-      <div className="button">Login</div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="firstname"
+          value={user.firstname}
+          placeholder="First Name"
+          onChange={handleChange}
+          required
+        ></input>
+        <input
+          type="text"
+          name="lastname"
+          value={user.lastname}
+          placeholder="Last Name"
+          onChange={handleChange}
+          required
+        ></input>
+        <input
+          type="email"
+          name="email"
+          value={user.email}
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        ></input>
+        <input
+          type="password"
+          name="password"
+          value={user.password}
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        ></input>
+        <input
+          type="password"
+          name="confirmPassword"
+          value={user.confirmPassword}
+          placeholder="Confirm Password"
+          onChange={handleChange}
+          required
+        ></input>
+        <button type="submit" className="button">
+          Signup
+        </button>
+      </form>
+      <p>
+        Already have an account? <a href="/login">Login</a>
+      </p>
     </div>
   );
 };

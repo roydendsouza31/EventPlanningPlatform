@@ -1,20 +1,3 @@
-// Connect to MongoDB
-const mongoose = require("mongoose");
-const connectionString = "mongodb://localhost:27017/creationsgoa";
-
-function main() {
-  try {
-    mongoose.connect(connectionString);
-    console.log("Connected to mongodb successfully!");
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-main();
-
-// Express Server
-
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
@@ -28,7 +11,7 @@ const port = 3000;
 app.use(express.json({ limit: "50mb" }));
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "http://localhost:3001"], // Allow requests from both frontend origins
     methods: ["GET", "POST"],
     credentials: true,
   })

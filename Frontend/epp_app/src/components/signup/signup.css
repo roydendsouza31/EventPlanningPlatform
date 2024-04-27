@@ -5,10 +5,12 @@
   margin: auto;
   padding: 20px;
   border-radius: 5px;
+  margin-top: 30px;
 }
 
 .signup h1 {
   text-align: center;
+  padding: 10px;
 }
 
 .signup input {
@@ -33,4 +35,14 @@
 
 .signup .button:hover {
   background-color: #0056b3;
+}
+
+.signup p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.signup p a {
+  color: #007bff; /* Blue color */
+  text-decoration: none; /* Remove underline */
 }
