@@ -30,6 +30,8 @@ const Login = ({ onLogin }) => {
           if (res.status === 200) {
             onLogin(); // Update authentication state
             navigate("/");
+          } else {
+            alert("User not found. Please signup.");
           }
         })
         .catch((error) => {

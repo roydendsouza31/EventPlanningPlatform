@@ -46,3 +46,13 @@
   color: #007bff; /* Blue color */
   text-decoration: none; /* Remove underline */
 }
+
+.success-banner {
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  padding: 20px 20px; /* Padding */
+  margin-top: 20px; /* Spacing from the form */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+  text-align: center; /* Center text */
+}

@@ -7,12 +7,13 @@ import { useNavigate } from "react-router-dom";
 const Signup = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    firstname: undefined,
-    lastname: undefined,
-    email: undefined,
-    password: undefined,
-    confirmPassword: undefined,
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,13 +30,20 @@ const Signup = () => {
       axios
         .post("http://localhost:3000/signup", user)
         .then((res) => {
-          navigate("/login");
+          if (res.status === 201) {
+            setRegistrationSuccess(true);
+            setTimeout(() => {
+              navigate("/login");
+            }, 2000); // Redirect after 2 seconds
+          } else if (res.status === 203) {
+            alert("User already exists. Please Login.");
+          }
         })
         .catch((error) => {
           console.error("Error signing up:", error);
         });
     } else {
-      alert("invalid input");
+      alert("Invalid input");
     }
   };
 
@@ -85,6 +93,11 @@ const Signup = () => {
       <p>
         Already have an account? <Link to="/login">Login</Link>
       </p>
+      {registrationSuccess && (
+        <div className="success-banner">
+          <p>Registration successful!</p>
+        </div>
+      )}
     </div>
   );
 };
