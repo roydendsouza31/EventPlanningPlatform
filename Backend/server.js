@@ -18,7 +18,13 @@ const cors = require("cors");
 const session = require("express-session");
 const store = new session.MemoryStore();
 
-const { signupRouter, loginRouter, profileRouter } = require("./routes");
+const {
+  signupRouter,
+  sellerSignupRouter,
+  loginRouter,
+  profileRouter,
+} = require("./routes");
+const seller = require("./models/seller");
 
 const app = express();
 const port = 3000;
@@ -48,6 +54,7 @@ app.use(
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/profile", profileRouter);
+app.use("/sellersignup", sellerSignupRouter);
 
 app.get("/", (req, res) => {
   res.redirect("/login");
