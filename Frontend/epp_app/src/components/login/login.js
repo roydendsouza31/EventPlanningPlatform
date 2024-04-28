@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; 
-const Login = ({setLoginUser}) => {
+
+const Login = ({ onLogin }) => {
   const navigate = useNavigate(); 
 
   const [user, setUser] = useState({
@@ -25,7 +26,10 @@ const Login = ({setLoginUser}) => {
       axios
         .post("http://localhost:3000/login", user)
         .then((res) => {
-          console.log(res.data);
+          if (res.status === 200) {
+            onLogin(); // Update authentication state
+            navigate('/');
+          }
         })
         .catch((error) => {
           console.error("Error signing up:", error);
@@ -37,7 +41,6 @@ const Login = ({setLoginUser}) => {
 
   return (
     <div className="login">
-      {console.log("user", user)}
       <h1>Login</h1>
       <input
         type="text"
@@ -45,14 +48,14 @@ const Login = ({setLoginUser}) => {
         name="email"
         value={user.email}
         onChange={handleChange}
-      ></input>
+      />
       <input
         type="password"
         placeholder="Enter your Password"
         name="password"
         value={user.password}
         onChange={handleChange}
-      ></input>
+      />
       <div className="button" onClick={login}>
         Login
       </div>
