@@ -14,7 +14,7 @@
 }
 
 .login input {
-  width: 100%;
+  width: 93%;
   margin-bottom: 10px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -22,7 +22,7 @@
 }
 
 .login .button {
-  width: 100%;
+  width: 93%;
   padding: 10px;
   margin-top: 10px;
   text-align: center;
