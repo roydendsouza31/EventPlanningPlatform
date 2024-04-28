@@ -4,6 +4,7 @@ import Signup from "./components/signup/signup";
 import Navbar from "./components/navbar/navbar";
 import Homepage from "./components/homepage/homepage";
 import Login from "./components/login/login";
+import SellerSignup from "./components/sellerRegistration/sellerSignup";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
@@ -16,13 +17,15 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route exact path="/" element={authenticated ? <Homepage /> : <Navigate to="/login" />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      <SellerSignup/>
     </div>
   );
 }
