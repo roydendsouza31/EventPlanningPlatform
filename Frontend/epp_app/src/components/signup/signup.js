@@ -25,8 +25,20 @@ const Signup = () => {
 
   const register = (e) => {
     e.preventDefault();
-    const { name, surname, email, password } = user;
-    if (name && surname && email && password) {
+    const { name, surname, email, password, confirmPassword } = user;
+    if (
+      !name.trim() ||
+      !surname.trim() ||
+      !email.trim() ||
+      !password.trim() ||
+      !confirmPassword.trim()
+    ) {
+      alert("Please fill out all fields");
+    } else if (password !== confirmPassword) {
+      alert("Passwords do not match");
+    } else if (!validateEmail(email)) {
+      alert("Please enter a valid email address");
+    } else {
       axios
         .post("http://localhost:3000/signup", user)
         .then((res) => {
@@ -42,9 +54,12 @@ const Signup = () => {
         .catch((error) => {
           console.error("Error signing up:", error);
         });
-    } else {
-      alert("Invalid input");
     }
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   return (

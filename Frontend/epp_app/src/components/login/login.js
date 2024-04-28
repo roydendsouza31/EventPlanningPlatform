@@ -20,10 +20,19 @@ const Login = ({ onLogin }) => {
     });
   };
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const login = (e) => {
     e.preventDefault();
     const { email, password } = user;
-    if (email && password) {
+    if (email.trim() === "" || password.trim() === "") {
+      alert("Please enter both email and password");
+    } else if (!validateEmail(email)) {
+      alert("Please enter a valid email address");
+    } else {
       axios
         .post("http://localhost:3000/login", user)
         .then((res) => {
@@ -37,8 +46,6 @@ const Login = ({ onLogin }) => {
         .catch((error) => {
           console.error("Error signing up:", error);
         });
-    } else {
-      alert("invalid input");
     }
   };
 
