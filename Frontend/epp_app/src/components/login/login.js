@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = ({ onLogin }) => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     email: "",
@@ -28,7 +29,7 @@ const Login = ({ onLogin }) => {
         .then((res) => {
           if (res.status === 200) {
             onLogin(); // Update authentication state
-            navigate('/');
+            navigate("/");
           }
         })
         .catch((error) => {
@@ -43,15 +44,15 @@ const Login = ({ onLogin }) => {
     <div className="login">
       <h1>Login</h1>
       <input
-        type="text"
-        placeholder="Enter your Email"
+        type="email"
+        placeholder="Email"
         name="email"
         value={user.email}
         onChange={handleChange}
       />
       <input
         type="password"
-        placeholder="Enter your Password"
+        placeholder="Password"
         name="password"
         value={user.password}
         onChange={handleChange}
@@ -59,10 +60,9 @@ const Login = ({ onLogin }) => {
       <div className="button" onClick={login}>
         Login
       </div>
-      <div>or</div>
-      <div className="button" onClick={() => navigate("/signup")}>
-        Register
-      </div>
+      <p>
+        Don't have an account? <Link to="/signup">Signup</Link>
+      </p>
     </div>
   );
 };

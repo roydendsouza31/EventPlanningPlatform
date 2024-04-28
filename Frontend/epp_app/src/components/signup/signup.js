@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./signup.css";
-import {Link} from "react-router-dom"
-
-import { useNavigate } from "react-router-dom"; 
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -26,27 +24,27 @@ const Signup = () => {
 
   const register = (e) => {
     e.preventDefault();
-    const { name, surname, email, password, confirmPassword } = user;
+    const { name, surname, email, password } = user;
     if (name && surname && email && password) {
-      axios.post("http://localhost:3000/signup", user)
-        .then(res => {
+      axios
+        .post("http://localhost:3000/signup", user)
+        .then((res) => {
           console.log(res.data);
-          navigate("/login")
+          navigate("/login");
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Error signing up:", error);
         });
     } else {
       alert("invalid input");
     }
   };
-  
 
   return (
     <div className="signup">
-     {console.log(user)}
+      {console.log(user)}
       <h1>Sign Up</h1>
-      <form > 
+      <form>
         <input
           type="text"
           name="name"
