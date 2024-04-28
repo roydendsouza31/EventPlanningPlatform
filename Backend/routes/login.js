@@ -8,8 +8,6 @@ router.post("/", async (req, res) => {
 
     const customer = await CustomerService.findByEmail(object.email);
 
-    console.log(customer)
-
     if (customer) {
       const { id, name, surname, email, image } = customer;
 
@@ -25,7 +23,7 @@ router.post("/", async (req, res) => {
           image,
         };
 
-        console.log("Customer logged in successfully!");
+        console.log(name + " logged in successfully!");
         res.status(200).send(customer);
       } else {
         res.status(203).send("Incorrect password");

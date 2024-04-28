@@ -7,11 +7,11 @@ import { useNavigate } from "react-router-dom";
 const Signup = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    firstname: undefined,
+    lastname: undefined,
+    email: undefined,
+    password: undefined,
+    confirmPassword: undefined,
   });
 
   const handleChange = (e) => {
@@ -29,7 +29,6 @@ const Signup = () => {
       axios
         .post("http://localhost:3000/signup", user)
         .then((res) => {
-          console.log(res.data);
           navigate("/login");
         })
         .catch((error) => {
@@ -42,13 +41,11 @@ const Signup = () => {
 
   return (
     <div className="signup">
-      {console.log(user)}
       <h1>Sign Up</h1>
       <form>
         <input
           type="text"
           name="name"
-          value={user.name}
           placeholder="First Name"
           onChange={handleChange}
           required
@@ -56,7 +53,6 @@ const Signup = () => {
         <input
           type="text"
           name="surname"
-          value={user.surname}
           placeholder="Last Name"
           onChange={handleChange}
           required
@@ -64,7 +60,6 @@ const Signup = () => {
         <input
           type="email"
           name="email"
-          value={user.email}
           placeholder="Email"
           onChange={handleChange}
           required
@@ -72,7 +67,6 @@ const Signup = () => {
         <input
           type="password"
           name="password"
-          value={user.password}
           placeholder="Password"
           onChange={handleChange}
           required
@@ -80,7 +74,6 @@ const Signup = () => {
         <input
           type="password"
           name="confirmPassword"
-          value={user.confirmPassword}
           placeholder="Confirm Password"
           onChange={handleChange}
           required

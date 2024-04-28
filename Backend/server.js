@@ -50,8 +50,7 @@ app.use("/login", loginRouter);
 app.use("/profile", profileRouter);
 
 app.get("/", (req, res) => {
-   res.redirect("/login");
- 
+  res.redirect("/login");
 });
 
 app.listen(port, () => {
