@@ -1,11 +1,21 @@
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import SellerProfilePage from "./seller/SellerProfilePage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      App
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/SellerProfilePage" />} />
+        <Route path="/SellerProfilePage" element={<SellerProfilePage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
