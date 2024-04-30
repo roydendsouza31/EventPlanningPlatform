@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./sellerSignup.css";
+import { Link } from "react-router-dom";
 
 const SellerSignup = () => {
   const [user, setUser] = useState({
@@ -14,7 +15,7 @@ const SellerSignup = () => {
     companyname: "",
     companyemail: "",
     officephone: "",
-    typeofservice: ""
+    typeofservice: "",
   });
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
@@ -28,8 +29,32 @@ const SellerSignup = () => {
 
   const register = (e) => {
     e.preventDefault();
-    const { name, surname, email, password, confirmPassword, address, phone, typeofservice, companyname, companyemail, officephone } = user;
-    if (!name.trim() || !surname.trim() || !email.trim() || !password.trim() || !confirmPassword.trim() || !address.trim() || !phone.trim() || !typeofservice.trim() || !companyname.trim() || !companyemail.trim() || !officephone.trim()) {
+    const {
+      name,
+      surname,
+      email,
+      password,
+      confirmPassword,
+      address,
+      phone,
+      typeofservice,
+      companyname,
+      companyemail,
+      officephone,
+    } = user;
+    if (
+      !name.trim() ||
+      !surname.trim() ||
+      !email.trim() ||
+      !password.trim() ||
+      !confirmPassword.trim() ||
+      !address.trim() ||
+      !phone.trim() ||
+      !typeofservice.trim() ||
+      !companyname.trim() ||
+      !companyemail.trim() ||
+      !officephone.trim()
+    ) {
       alert("Please fill out all fields");
     } else if (password !== confirmPassword) {
       alert("Passwords do not match");
@@ -41,8 +66,7 @@ const SellerSignup = () => {
         .then((res) => {
           if (res.status === 201) {
             setRegistrationSuccess(true);
-            setTimeout(() => {
-            }, 2000);
+            setTimeout(() => {}, 2000);
           } else if (res.status === 203) {
             alert("User already exists. Please Login.");
           }
@@ -60,7 +84,7 @@ const SellerSignup = () => {
 
   return (
     <div className="signup_seller">
-        {console.log(user)}
+      {console.log(user)}
       <form>
         <div className="seller-details">
           <h2>Seller Details</h2>
@@ -150,7 +174,11 @@ const SellerSignup = () => {
           Signup
         </button>
       </form>
-      
+
+      <p>
+        Already a seller? <Link to="/sellerlogin">Login</Link>
+      </p>
+
       {registrationSuccess && (
         <div className="success-banner">
           <p>Registration successful!</p>

@@ -22,9 +22,9 @@ const {
   signupRouter,
   sellerSignupRouter,
   loginRouter,
+  sellerLoginRouter,
   profileRouter,
 } = require("./routes");
-const seller = require("./models/seller");
 
 const app = express();
 const port = 3000;
@@ -55,6 +55,7 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/profile", profileRouter);
 app.use("/sellersignup", sellerSignupRouter);
+app.use("/sellerlogin", sellerLoginRouter);
 
 app.get("/", (req, res) => {
   res.redirect("/login");

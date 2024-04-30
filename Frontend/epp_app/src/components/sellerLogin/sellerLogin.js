@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const SellerLogin = ({ onLogin }) => {
+const Login = ({ onLogin }) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -34,17 +34,17 @@ const SellerLogin = ({ onLogin }) => {
       alert("Please enter a valid email address");
     } else {
       axios
-        .post("http://localhost:3000/login", user)
+        .post("http://localhost:3000/sellerlogin", user)
         .then((res) => {
           if (res.status === 200) {
             onLogin(); // Update authentication state
             navigate("/");
           } else {
-            alert("Please check your credientials and try again.");
+            alert("seller not found. Please signup.");
           }
         })
         .catch((error) => {
-          console.error("Error loggin in:", error);
+          console.error("Error logging in:", error);
         });
     }
   };
@@ -70,10 +70,10 @@ const SellerLogin = ({ onLogin }) => {
         Login
       </div>
       <p>
-        Don't have an account? <Link to="/sellerSignup">Signup</Link>
+        Don't have an account? <Link to="/sellersignup">Join as seller</Link>
       </p>
     </div>
   );
 };
 
-export default SellerLogin;
+export default Login;
