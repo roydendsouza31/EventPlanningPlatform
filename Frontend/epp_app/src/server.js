@@ -21,13 +21,13 @@ const sellerSchema = new mongoose.Schema({
   reviews: [String],
   uploadedPhotos: [String],
   logoUrl: String,
-  address: String, // New field for company address
-  phoneNumber: String, // New field for phone number
+  address: String,
+  phoneNumber: String,
   socialMediaHandles: {
     facebook: String,
     twitter: String,
     instagram: String,
-  }, // New field for social media handles
+  },
 });
 
 const Seller = mongoose.model("Seller", sellerSchema);

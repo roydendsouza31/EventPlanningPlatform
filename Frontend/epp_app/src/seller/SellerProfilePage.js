@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./SellerProfilePage.css"; // Import CSS for styling
+import { useNavigate } from "react-router-dom";
 
 const SellerProfilePage = () => {
+  let navigate = useNavigate();
   const [sellerData, setSellerData] = useState({
     companyName: "",
     sellerInfo: "",
@@ -99,6 +101,10 @@ const SellerProfilePage = () => {
   return (
     <div className="seller">
       <div className="seller-profile-container">
+        <button className="back" onClick={() => navigate(-1)}>
+          Back
+        </button>
+
         <div className="seller-header">
           <div>
             <img

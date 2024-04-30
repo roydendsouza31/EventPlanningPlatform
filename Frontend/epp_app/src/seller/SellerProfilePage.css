@@ -53,3 +53,7 @@
 .seller-forms button:hover {
   background-color: #1e6fa5; /* Darker hover color */
 }
+
+.button {
+  width: 2px;
+}
