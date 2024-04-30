@@ -22,9 +22,10 @@ function App() {
           <Route exact path="/" element={authenticated ? <Homepage /> : <Navigate to="/login" />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/sellersignup" element={<SellerSignup/>} />
         </Routes>
       </BrowserRouter> 
-<SellerSignup/>
+
     </div>
   );
 }

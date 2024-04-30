@@ -37,7 +37,7 @@ const SellerSignup = () => {
       alert("Please enter a valid email address");
     } else {
       axios
-        .post("http://localhost:3000/signup", user)
+        .post("http://localhost:3000/sellersignup", user)
         .then((res) => {
           if (res.status === 201) {
             setRegistrationSuccess(true);
