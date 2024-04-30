@@ -59,7 +59,7 @@ const SellerSignup = () => {
   };
 
   return (
-    <div className="signup">
+    <div className="signup_seller">
         {console.log(user)}
       <form>
         <div className="seller-details">

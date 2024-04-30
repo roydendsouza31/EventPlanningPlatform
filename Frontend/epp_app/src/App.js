@@ -17,15 +17,14 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route exact path="/" element={authenticated ? <Homepage /> : <Navigate to="/login" />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
-      </BrowserRouter> */}
-
-      <SellerSignup/>
+      </BrowserRouter> 
+<SellerSignup/>
     </div>
   );
 }
