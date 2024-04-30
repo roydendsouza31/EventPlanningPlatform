@@ -4,6 +4,8 @@ import Signup from "./components/signup/signup";
 import Navbar from "./components/navbar/navbar";
 import Homepage from "./components/homepage/homepage";
 import Login from "./components/login/login";
+import SellerSignup from "./components/sellerRegistration/sellerSignup";
+import SellerLogin from "./components/sellerLogin/sellerLogin";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
@@ -18,9 +20,18 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={authenticated ? <Homepage /> : <Navigate to="/login" />} />
+          <Route
+            exact
+            path="/"
+            element={authenticated ? <Homepage /> : <Navigate to="/login" />}
+          />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/sellersignup" element={<SellerSignup />} />
+          <Route
+            path="/sellerlogin"
+            element={<SellerLogin onLogin={handleLogin} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

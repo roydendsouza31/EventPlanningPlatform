@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./login.css";
+import "./sellerLogin.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -34,13 +34,13 @@ const Login = ({ onLogin }) => {
       alert("Please enter a valid email address");
     } else {
       axios
-        .post("http://localhost:3000/login", user)
+        .post("http://localhost:3000/sellerlogin", user)
         .then((res) => {
           if (res.status === 200) {
             onLogin(); // Update authentication state
             navigate("/");
           } else {
-            alert("User not found. Please signup.");
+            alert("seller not found. Please signup.");
           }
         })
         .catch((error) => {
@@ -50,8 +50,8 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className="login">
-      <h1>Login</h1>
+    <div className="sellerLogin">
+      <h1>Seller Login</h1>
       <input
         type="email"
         placeholder="Email"
@@ -70,7 +70,7 @@ const Login = ({ onLogin }) => {
         Login
       </div>
       <p>
-        Don't have an account? <Link to="/signup">Signup</Link>
+        Don't have an account? <Link to="/sellersignup">Join as seller</Link>
       </p>
     </div>
   );
