@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./login.css";
+import "./sellerLogin.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const Login = ({ onLogin }) => {
+const SellerLogin = ({ onLogin }) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -40,18 +40,18 @@ const Login = ({ onLogin }) => {
             onLogin(); // Update authentication state
             navigate("/");
           } else {
-            alert("User not found. Please signup.");
+            alert("Please check your credientials and try again.");
           }
         })
         .catch((error) => {
-          console.error("Error logging in:", error);
+          console.error("Error loggin in:", error);
         });
     }
   };
 
   return (
-    <div className="login">
-      <h1>Login</h1>
+    <div className="sellerLogin">
+      <h1>Seller Login</h1>
       <input
         type="email"
         placeholder="Email"
@@ -70,10 +70,10 @@ const Login = ({ onLogin }) => {
         Login
       </div>
       <p>
-        Don't have an account? <Link to="/signup">Signup</Link>
+        Don't have an account? <Link to="/sellerSignup">Signup</Link>
       </p>
     </div>
   );
 };
 
-export default Login;
+export default SellerLogin;
