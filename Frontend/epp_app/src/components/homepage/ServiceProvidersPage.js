@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const ServiceProvidersPage = ({ match }) => {
+const ServiceProvidersPage = () => {
+  const { serviceType } = useParams();
   const [serviceProviders, setServiceProviders] = useState([]);
 
   useEffect(() => {
     const fetchServiceProviders = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/getallserviceproviders/${match.params.serviceType}`);
+        const response = await axios.get(
+          `http://localhost:3000/api/getallserviceproviders/${serviceType}`
+        );
+        console.log(response.data);
         setServiceProviders(response.data);
       } catch (error) {
         console.error("Error fetching service providers:", error);
@@ -16,18 +21,18 @@ const ServiceProvidersPage = ({ match }) => {
     };
 
     fetchServiceProviders();
-  }, [match.params.serviceType]);
+  }, [serviceType]);
 
   return (
     <div>
-      <h1>{match.params.serviceType}</h1>
+      <h1>{serviceType}</h1>
       <div className="service-providers">
-        {serviceProviders.map(provider => (
-          <div key={provider.id} className="provider-card">
-            <img src={provider.profilePic} alt={provider.name} />
-            <p>{provider.name}</p>
-            <p>Rating: {provider.rating}</p>
-            <p>Reviews: {provider.numReviews}</p>
+        {serviceProviders.map((seller) => (
+          <div key={seller.id} className="provider-card">
+            <img src={seller.profilePic} alt={seller.name} />
+            <p>{seller.name}</p>
+            <p>Rating: {seller.rating}</p>
+            <p>Reviews:</p>
           </div>
         ))}
       </div>

@@ -31,7 +31,10 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/sellersignup" element={<SellerSignup />} />
           <Route path="/" element={<Landingpage />} />
-          <Route path="/service-providers/:serviceType" element={<ServiceProvidersPage />} />
+          <Route
+            path="/serviceproviders/:serviceType"
+            element={<ServiceProvidersPage />}
+          />
           <Route
             path="/sellerlogin"
             element={<SellerLogin onLogin={handleLogin} />}
