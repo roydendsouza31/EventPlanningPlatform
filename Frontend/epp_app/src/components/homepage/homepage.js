@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./homepage.css";
 
 const Homepage = () => {
   const navigate = useNavigate();
+  const [showMore, setShowMore] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -16,6 +17,10 @@ const Homepage = () => {
     }
   };
 
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  };
+
   return (
     <div className="homepage">
       <header className="header">
@@ -24,27 +29,19 @@ const Homepage = () => {
           <a href="#">Cart</a>
           <a href="#">Order History</a>
           <a href="#">Profile</a>
-          <a href="#" onClick={handleLogout}>
-            Logout
-          </a>
+          <a href="#" onClick={handleLogout}>Logout</a>
         </nav>
       </header>
-
+      
       <div className="search-bar">
-        <h1>
-          Your Event, <span>Your Way</span>
-        </h1>
-        <div className="searchbox">
-          <select
-            className="searchpackage"
-            // onChange={(e) => setSearchTerm(e.target.value)}
-          >
+        <h1>Your Event, <span>Your Way</span></h1>
+        <div className='searchbox'>
+          <select className="searchpackage">
             <option value="">Search by category</option>
             <option value="wedding">Wedding</option>
             <option value="birthday">Birthday</option>
             <option value="corporate">Corporate Event</option>
             <option value="graduation">Graduation</option>
-            {/* Add more options as needed */}
           </select>
           <button className="searchbutton">Search</button>
         </div>
@@ -53,13 +50,13 @@ const Homepage = () => {
       <div className="suppliercategory">
         <div className="titlerow">
           <h2>Suppliers Categories</h2>
-          <button>View More</button>
+          <button onClick={toggleShowMore}>
+            {showMore ? "View Less" : "View More"}
+          </button>
         </div>
         <div className="suppliercategorybox">
-          <Link
-            to="/serviceproviders/photographer_videographer"
-            className="suppliericon"
-          >
+          <div class="rowwise">
+          <Link to="/serviceproviders/photographer_videographer" className="suppliericon">
             <div className="image-placeholder"></div>
             <p className="category">PHOTOGRAPHER</p>
           </Link>
@@ -67,10 +64,7 @@ const Homepage = () => {
             <div className="image-placeholder"></div>
             <p className="category">VENUE PLANNERS</p>
           </Link>
-          <Link
-            to="/serviceproviders/makeup_hairstylish"
-            className="suppliericon"
-          >
+          <Link to="/serviceproviders/makeup_hairstylish" className="suppliericon">
             <div className="image-placeholder"></div>
             <p className="category">MAKEUP ARTIST</p>
           </Link>
@@ -78,6 +72,26 @@ const Homepage = () => {
             <div className="image-placeholder"></div>
             <p className="category">DECORATOR</p>
           </Link>
+          </div>
+
+          {showMore && (
+            <>
+            <div class="rowwise">
+              <Link to="/serviceproviders/Music" className="suppliericon">
+                <div className="image-placeholder"></div>
+                <p className="category">MUSIC</p>
+              </Link>
+              <Link to="/serviceproviders/emcee" className="suppliericon">
+                <div className="image-placeholder"></div>
+                <p className="category">EMCEE</p>
+              </Link>
+              <Link to="/serviceproviders/Catering" className="suppliericon">
+                <div className="image-placeholder"></div>
+                <p className="category">CATERING</p>
+              </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
