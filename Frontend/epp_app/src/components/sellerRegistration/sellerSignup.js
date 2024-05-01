@@ -3,8 +3,10 @@ import axios from "axios";
 import "./sellerSignup.css";
 import { Link } from "react-router-dom";
 import Navbar from "../navbar/navbar";
+import { useNavigate } from "react-router-dom";
 
 const SellerSignup = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     surname: "",
@@ -67,7 +69,9 @@ const SellerSignup = () => {
         .then((res) => {
           if (res.status === 201) {
             setRegistrationSuccess(true);
-            setTimeout(() => {}, 2000);
+            setTimeout(() => {
+              navigate("/sellerlogin");
+            }, 2000); // Redirect after 2 seconds
           } else if (res.status === 203) {
             alert("User already exists. Please Login.");
           }
@@ -85,116 +89,114 @@ const SellerSignup = () => {
 
   return (
     <>
-    <Navbar/>
-    <div className="signup_seller">
-      {console.log(user)}
-      <form>
-        <div className="seller-details">
-          <h2>Seller Details</h2>
-          <input
-            type="text"
-            name="name"
-            placeholder="First Name"
-            onChange={handleChange}
-            required
-          ></input>
-          <input
-            type="text"
-            name="surname"
-            placeholder="Last Name"
-            onChange={handleChange}
-            required
-          ></input>
-          <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            onChange={handleChange}
-            required
-          ></input>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            onChange={handleChange}
-            required
-          ></input>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-            required
-          ></input>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            required
-          ></input>
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            onChange={handleChange}
-            required
-          ></input>
-        </div>
+      <Navbar />
+      <div className="signup_seller">
+        {console.log(user)}
+        <form>
+          <div className="seller-details">
+            <h2>Seller Details</h2>
+            <input
+              type="text"
+              name="name"
+              placeholder="First Name"
+              onChange={handleChange}
+              required
+            ></input>
+            <input
+              type="text"
+              name="surname"
+              placeholder="Last Name"
+              onChange={handleChange}
+              required
+            ></input>
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+              onChange={handleChange}
+              required
+            ></input>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              onChange={handleChange}
+              required
+            ></input>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              required
+            ></input>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              required
+            ></input>
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              onChange={handleChange}
+              required
+            ></input>
+          </div>
 
-        <div className="company-details">
-          <h2>Company Details</h2>
-          <input
-            type="text"
-            name="companyname"
-            placeholder="Company Name"
-            onChange={handleChange}
-            required
-          ></input>
-          <input
-            type="email"
-            name="companyemail"
-            placeholder="Company Email"
-            onChange={handleChange}
-            required
-          ></input>
-          <input
-            type="tel"
-            name="officephone"
-            placeholder="Office Phone Number"
-            onChange={handleChange}
-            required
-          ></input>
-          <select
-    name="typeofservice"
-    onChange={handleChange}
-    required
-  >
-    <option value="">Select Service</option>
-    <option value="venue">Venue</option>
-    <option value="decorator">Decorator</option>
-    <option value="catering">Catering</option>
-    <option value="photographer_videographer">Photographer/Videographer</option>
-    <option value="music">Music</option>
-    <option value="makeup_hairstylish">Makeup/Hairstylist</option>
-    <option value="emcee">Emcee</option>
-  </select>
-        </div>
-        <button type="submit" className="button" onClick={register}>
-          Signup
-        </button>
-      </form>
+          <div className="company-details">
+            <h2>Company Details</h2>
+            <input
+              type="text"
+              name="companyname"
+              placeholder="Company Name"
+              onChange={handleChange}
+              required
+            ></input>
+            <input
+              type="email"
+              name="companyemail"
+              placeholder="Company Email"
+              onChange={handleChange}
+              required
+            ></input>
+            <input
+              type="tel"
+              name="officephone"
+              placeholder="Office Phone Number"
+              onChange={handleChange}
+              required
+            ></input>
+            <select name="typeofservice" onChange={handleChange} required>
+              <option value="">Select Service</option>
+              <option value="venue">Venue</option>
+              <option value="decorator">Decorator</option>
+              <option value="catering">Catering</option>
+              <option value="photographer_videographer">
+                Photographer/Videographer
+              </option>
+              <option value="music">Music</option>
+              <option value="makeup_hairstylish">Makeup/Hairstylist</option>
+              <option value="emcee">Emcee</option>
+            </select>
+          </div>
+          <button type="submit" className="button" onClick={register}>
+            Signup
+          </button>
+        </form>
 
-      <p>
-        Already a seller? <Link to="/sellerlogin">Login</Link>
-      </p>
+        <p>
+          Already a seller? <Link to="/sellerlogin">Login</Link>
+        </p>
 
-      {registrationSuccess && (
-        <div className="success-banner">
-          <p>Registration successful!</p>
-        </div>
-      )}
-    </div>
+        {registrationSuccess && (
+          <div className="success-banner">
+            <p>Registration successful!</p>
+          </div>
+        )}
+      </div>
     </>
   );
 };
