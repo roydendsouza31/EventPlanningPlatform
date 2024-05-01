@@ -56,4 +56,15 @@ router.post("/createtestimonial", async (req, res) => {
   }
 });
 
+//Route to get a particular service provider by id
+router.get("/getserviceprovider/:id", async (req, res) => {
+  try {
+    const seller = await Seller.findById(req.params.id);
+    res.status(200).json(seller);
+  } catch (error) {
+    console.error("Error fetching service provider:", error);
+    res.status(500).json({ error: "Failed to fetch service provider" });
+  }
+});
+
 module.exports = router;
