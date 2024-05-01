@@ -1,46 +1,51 @@
-/* AboutUs container */
-.AboutUs {
-    background-color: rgb(195, 205, 211);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5%;
-    padding: 10px;
-    width: 80%;
-    
-  }
-  
-  /* Logo */
-  .logo {
-    margin-bottom: 20px;
+.founders {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-  }
-  
-  .logo img {
-    max-width: 200px; /* Adjust according to your logo size */
-  }
-  
-  /* Content */
-  .content {
-    text-align: center;
-  }
-  
-  .content h2 {
-    font-size: 24px;
-    margin-bottom: 16px;
-  }
-  
-  .content p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #666;
-  }
-  
-  /* Founders */
-  .founders {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
+.founder-card {
+  background-color: cadetblue;
+  flex: 0 1 calc(20% - 20px);
+  margin-bottom: 20px;
+  text-align: center; /* Align text to the center */
+  border-radius: 30px; /* Add border-radius for curved corners */
+}
+
+
+.founder-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.founder-details {
+  text-align: center; /* Align text to the center */
+}
+
+.content {
+  text-align: center; /* Align all text to the center */
+}
+
+/* Additional styling for the AboutUs component */
+.AboutUs {
+  background-color: rgb(205, 234, 236);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  height: 100%; /* Set the height to 100% */
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 15px;
+}
+
+.logo img {
+  width: 200px; /* Adjust as needed */
+  height: auto;
+}
