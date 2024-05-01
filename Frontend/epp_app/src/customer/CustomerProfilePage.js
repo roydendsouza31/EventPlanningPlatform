@@ -1,7 +1,6 @@
-// CustomerProfilePage.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-//import "./CustomerProfilePage.css"; // Import CSS for styling
+import "./customer.css";
 import { useNavigate } from "react-router-dom";
 
 const CustomerProfilePage = () => {
@@ -13,38 +12,50 @@ const CustomerProfilePage = () => {
     phoneNumber: "",
   });
 
-  const [pastOrders, setPastOrders] = useState([]);
-  const [showOrders, setShowOrders] = useState(false);
+  const [editedCustomerData, setEditedCustomerData] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     fetchCustomerData();
-    fetchPastOrders();
   }, []);
 
   const fetchCustomerData = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/customer");
       setCustomerData(response.data);
+      setEditedCustomerData(response.data); // Set editedCustomerData initially
     } catch (error) {
       console.error("Error fetching customer data:", error);
     }
   };
 
-  const fetchPastOrders = async () => {
+  const handleEditButtonClick = () => {
+    setIsEditing(true);
+    // Set editedCustomerData to a copy of customerData for editing
+    setEditedCustomerData({ ...customerData });
+  };
+
+  const handleEditFormSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.get("http://localhost:5000/api/orders");
-      setPastOrders(response.data);
+      const response = await axios.put(
+        "http://localhost:5000/api/customer",
+        editedCustomerData
+      );
+      setCustomerData(response.data); // Update customer data with the response from the server
+      setIsEditing(false);
     } catch (error) {
-      console.error("Error fetching past orders:", error);
+      console.error("Error updating customer information:", error);
     }
   };
 
-  const handleShowOrders = () => {
-    setShowOrders(true);
-  };
-
-  const handleGoBack = () => {
-    setShowOrders(false);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    // Update editedCustomerData state based on user input
+    setEditedCustomerData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -57,30 +68,66 @@ const CustomerProfilePage = () => {
           <h1>{customerData.name}'s Profile</h1>
         </div>
         <div className="customer-info">
-          <h2>Customer Information</h2>
-          <p>
-            <strong>Email:</strong> {customerData.email}
-            <br />
-            <strong>Address:</strong> {customerData.address}
-            <br />
-            <strong>Phone Number:</strong> {customerData.phoneNumber}
-          </p>
-        </div>
-        <div className="customer-orders">
-          {showOrders ? (
-            <div>
-              <h2>Past Orders</h2>
-              <ul>
-                {pastOrders.map((order, index) => (
-                  <li key={index}>{order}</li>
-                ))}
-              </ul>
-              <button onClick={handleGoBack}>Back</button>
-            </div>
+          {isEditing ? (
+            <form onSubmit={handleEditFormSubmit}>
+              {/* Input fields for editing customer information */}
+              <br />
+              <label>Name:</label>
+              <input
+                type="text"
+                name="name"
+                value={editedCustomerData.name}
+                onChange={handleInputChange}
+                required
+              />
+              <br />
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                value={editedCustomerData.email}
+                onChange={handleInputChange}
+                required
+              />
+              <br />
+              <label>Address:</label>
+              <input
+                type="text"
+                name="address"
+                value={editedCustomerData.address}
+                onChange={handleInputChange}
+                required
+              />
+              <br />
+              <label>Phone Number:</label>
+              <input
+                type="text"
+                name="phoneNumber"
+                value={editedCustomerData.phoneNumber}
+                onChange={handleInputChange}
+                required
+              />
+              <br />
+              <button type="submit">Save</button>
+            </form>
           ) : (
-            <button onClick={handleShowOrders}>Show Past Orders</button>
+            <>
+              <h2>Customer Information</h2>
+              <p>
+                <strong>Name:</strong> {customerData.name}
+                <br />
+                <strong>Email:</strong> {customerData.email}
+                <br />
+                <strong>Address:</strong> {customerData.address}
+                <br />
+                <strong>Phone Number:</strong> {customerData.phoneNumber}
+              </p>
+            </>
           )}
         </div>
+        <button onClick={() => setIsEditing(!isEditing)}>
+          {isEditing ? "Cancel" : "Edit"}
+        </button>
       </div>
     </div>
   );

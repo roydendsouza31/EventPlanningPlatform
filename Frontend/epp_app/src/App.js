@@ -8,6 +8,9 @@ import {
 import SellerProfilePage from "./seller/SellerProfilePage";
 import CustomerView from "./customer/CustomerView";
 import CustomerProfilePage from "./customer/CustomerProfilePage";
+import EventCalendar from "./customer/EventCalender";
+import Testimonials from "./Components/Testimonials";
+import AboutUs from "./Components/AboutUs";
 const App = () => {
   return (
     <Router>
@@ -16,6 +19,8 @@ const App = () => {
         <Route path="/SellerProfilePage" element={<SellerProfilePage />} />
         <Route path="/CustomerView" element={<CustomerView />} />
         <Route path="/CustomerProfilePage" element={<CustomerProfilePage />} />
+        <Route path="/Testimonials" element={<Testimonials />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
       </Routes>
     </Router>
   );
