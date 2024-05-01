@@ -23,7 +23,7 @@ router.get("/gettopserviceproviders", async (req, res) => {
         $sort: { rating: -1, reviewsCount: -1 }, // Sort by rating in descending order and then by reviewsCount
       },
       {
-        $limit: 5, // Limit to top 5 service providers
+        $limit: 3, // Limit to top 3 service providers
       },
     ]);
     res.status(200).json(topServiceProviders);
