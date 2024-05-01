@@ -8,7 +8,7 @@ import {
 import SellerProfilePage from "./seller/SellerProfilePage";
 import CustomerView from "./customer/CustomerView";
 import CustomerProfilePage from "./customer/CustomerProfilePage";
-import EventCalendar from "./customer/EventCalender";
+
 import Testimonials from "./Components/Testimonials";
 import AboutUs from "./Components/AboutUs";
 const App = () => {

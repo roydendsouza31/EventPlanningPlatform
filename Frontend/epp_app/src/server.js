@@ -161,7 +161,24 @@ app.put("/api/customer", async (req, res) => {
 // });
 
 //***********calender */
+// Create a schema for events
+// Create a schema for events
+const eventSchema = new mongoose.Schema({
+  title: String,
+  start: Date, // Include start time field in the schema
+});
 
+// Create a model for events
+const Event = mongoose.model("Event", eventSchema);
+
+// Connect to MongoDB
+
+// Check connection
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => console.log("Connected to MongoDB"));
+
+// Get all events
 app.get("/api/events", async (req, res) => {
   try {
     const events = await Event.find();
@@ -171,12 +188,48 @@ app.get("/api/events", async (req, res) => {
   }
 });
 
+// Route to add a new event
 app.post("/api/events", async (req, res) => {
   try {
+    // Extract title and start date from the request body
     const { title, start } = req.body;
+
+    // Create a new event instance
     const event = new Event({ title, start });
+
+    // Save the new event to the database
     await event.save();
+
+    // Send a success response
     res.status(201).json(event);
+  } catch (error) {
+    // If an error occurs, send an error response
+    res.status(400).json({ message: error.message });
+  }
+});
+
+// Update an event
+app.put("/api/events/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, start } = req.body;
+    const event = await Event.findByIdAndUpdate(
+      id,
+      { title, start },
+      { new: true }
+    );
+    res.json(event);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+// Delete an event
+app.delete("/api/events/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Event.findByIdAndDelete(id);
+    res.json({ message: "Event deleted successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

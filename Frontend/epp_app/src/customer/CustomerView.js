@@ -22,16 +22,16 @@ const CustomerView = () => {
     },
   });
 
-  const [editedSellerInfo, setEditedSellerInfo] = useState({
-    companyName: "",
-    sellerInfo: "",
-    contactDetails: "",
-    address: "",
-    phoneNumber: "",
-    socialMediaHandles: [],
-  });
+  //   const [editedSellerInfo, setEditedSellerInfo] = useState({
+  //     companyName: "",
+  //     sellerInfo: "",
+  //     contactDetails: "",
+  //     address: "",
+  //     phoneNumber: "",
+  //     socialMediaHandles: [],
+  //   });
 
-  const [isEditing, setIsEditing] = useState(false);
+  //   const [isEditing, setIsEditing] = useState(false);
 
   const fetchSellerData = async () => {
     try {
@@ -39,7 +39,7 @@ const CustomerView = () => {
         "http://localhost:5000/api/seller-profile"
       );
       setSellerData(response.data);
-      setEditedSellerInfo(response.data);
+      //setEditedSellerInfo(response.data);
     } catch (error) {
       console.error("Error fetching seller data:", error);
     }
@@ -49,9 +49,9 @@ const CustomerView = () => {
     fetchSellerData();
   }, []);
 
-  const handleEditButtonClick = () => {
-    setIsEditing(true);
-  };
+  //   const handleEditButtonClick = () => {
+  //     setIsEditing(true);
+  //   };
 
   return (
     <div className="seller">
