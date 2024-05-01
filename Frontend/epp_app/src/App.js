@@ -7,6 +7,7 @@ import Login from "./components/login/login";
 import SellerSignup from "./components/sellerRegistration/sellerSignup";
 import SellerLogin from "./components/sellerLogin/sellerLogin";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Landingpage from "./components/landingpage/landingpage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -17,17 +18,18 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
       <BrowserRouter>
         <Routes>
           <Route
             exact
-            path="/"
+            path="/Homepage"
             element={authenticated ? <Homepage /> : <Navigate to="/login" />}
           />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/sellersignup" element={<SellerSignup />} />
+          <Route path="/" element={<Landingpage />} />
           <Route
             path="/sellerlogin"
             element={<SellerLogin onLogin={handleLogin} />}
