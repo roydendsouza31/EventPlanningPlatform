@@ -71,7 +71,7 @@ function Testimonials() {
     return (
         <div>
             <div id="header">
-                <img id="logo" src="./Modern Minimal Name Initials Logo .png" alt="Logo" />
+                <img id="logo" src="../../public/images/Modern Minimal Name Initials Logo .png" alt="Logo" />
                 <div id="buttons">
                     <button className="button">sign-up</button>
                     <button className="button">sign-in</button>

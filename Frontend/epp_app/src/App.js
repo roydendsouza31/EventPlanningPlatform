@@ -1,17 +1,21 @@
-import './App.css';
-import Testimonials from './Components/Testimonails'; // Assuming Testimonials.js is in the same directory
-// import Footer from './Components/Footer';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-
-function App() {
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Testimonials from "./Components/Testimonails";
+import AboutUs from "./Components/AboutUS";
+const App = () => {
   return (
-    <div className="App">
-        <Router>
-            <Testimonials />
-        </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/Testimonials" element={<Testimonials />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

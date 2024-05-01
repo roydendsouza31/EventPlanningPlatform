@@ -1,5 +1,5 @@
 body {
-    background-image: url('../public/bg1.jpg');
+    background-image: url('../public/images/bg1.jpg');
     background-size: cover; /* Cover the entire body with the background image */
     font-family: Arial, sans-serif;
     margin: 0;
