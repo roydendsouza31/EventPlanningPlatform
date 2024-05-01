@@ -162,13 +162,20 @@ const SellerSignup = () => {
             onChange={handleChange}
             required
           ></input>
-          <input
-            type="text"
-            name="typeofservice"
-            placeholder="Service"
-            onChange={handleChange}
-            required
-          ></input>
+          <select
+    name="typeofservice"
+    onChange={handleChange}
+    required
+  >
+    <option value="">Select Service</option>
+    <option value="venue">Venue</option>
+    <option value="decorator">Decorator</option>
+    <option value="catering">Catering</option>
+    <option value="photographer_videographer">Photographer/Videographer</option>
+    <option value="music">Music</option>
+    <option value="makeup_hairstylish">Makeup/Hairstylist</option>
+    <option value="emcee">Emcee</option>
+  </select>
         </div>
         <button type="submit" className="button" onClick={register}>
           Signup

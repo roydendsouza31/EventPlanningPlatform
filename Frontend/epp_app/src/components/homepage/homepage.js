@@ -1,4 +1,3 @@
-/* Homepage.js */
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -33,12 +32,17 @@ const Homepage = () => {
       <div className="search-bar">
         <h1>Your Event, <span>Your Way</span></h1>
         <div className='searchbox'>
-          <input
-            type="text"
-            placeholder="Search by category eg wedding"
-            className="searchpackage"
-            // onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <select
+       className="searchpackage"
+  // onChange={(e) => setSearchTerm(e.target.value)}
+>
+  <option value="">Search by category</option>
+  <option value="wedding">Wedding</option>
+  <option value="birthday">Birthday</option>
+  <option value="corporate">Corporate Event</option>
+  <option value="graduation">Graduation</option>
+  {/* Add more options as needed */}
+</select>
           <button className="searchbutton">Search</button>
         </div>
       </div>
