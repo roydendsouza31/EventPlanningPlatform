@@ -15,6 +15,24 @@ router.get("/getallserviceproviders/:servicetype", async (req, res) => {
   }
 });
 
+// Route to get the top 5 service providers by rating and number of reviews
+router.get("/gettopserviceproviders", async (req, res) => {
+  try {
+    const topServiceProviders = await Seller.aggregate([
+      {
+        $sort: { rating: -1, reviewsCount: -1 }, // Sort by rating in descending order and then by reviewsCount
+      },
+      {
+        $limit: 5, // Limit to top 5 service providers
+      },
+    ]);
+    res.status(200).json(topServiceProviders);
+  } catch (error) {
+    console.error("Error fetching top service providers:", error);
+    res.status(500).json({ error: "Failed to fetch top service providers" });
+  }
+});
+
 // Route to get all testimonials
 router.get("/gettestimonials", async (req, res) => {
   try {
