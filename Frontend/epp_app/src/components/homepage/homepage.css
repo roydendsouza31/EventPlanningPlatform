@@ -120,3 +120,9 @@ gap: 50px;}
 .topservices{
   margin-bottom:10%;
 }
+
+.service-providers-grid_homepage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}

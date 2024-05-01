@@ -20,7 +20,7 @@ const ServiceProvidersPage = () => {
   }, []);
 
   return (
-    <div className="service-providers-grid">
+    <div className="service-providers-grid_homepage">
       {topServiceProviders.map((provider) => (
         <div key={provider.id} className="provider-card">
           <img src={provider.profilePic} alt={provider.name} />
