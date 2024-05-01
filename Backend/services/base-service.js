@@ -18,6 +18,10 @@ class BaseService {
   async find(id) {
     return this.model.findById(id);
   }
+
+  async find() {
+    return this.model.find();
+  }
 }
 
 module.exports = BaseService;

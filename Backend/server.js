@@ -24,6 +24,7 @@ const {
   loginRouter,
   sellerLoginRouter,
   profileRouter,
+  testimonialRouter,
 } = require("./routes");
 
 const app = express();
@@ -56,6 +57,7 @@ app.use("/login", loginRouter);
 app.use("/profile", profileRouter);
 app.use("/sellersignup", sellerSignupRouter);
 app.use("/sellerlogin", sellerLoginRouter);
+app.use("/testimonials", testimonialRouter);
 
 app.get("/", (req, res) => {
   res.redirect("/login");
