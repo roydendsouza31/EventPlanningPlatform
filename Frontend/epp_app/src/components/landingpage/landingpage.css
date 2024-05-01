@@ -74,4 +74,46 @@
   width:40%;;
  }
 
+ .testimonials{
+  margin-top:10%;
+ }
  
+ .testimonial-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonial-card {
+  flex: 0 0 auto;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  padding: 20px; /* Add padding inside the card */
+  transition: transform 0.3s ease; /* Add smooth transition */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px); /* Add a slight lift effect on hover */
+}
+
+.testimonial-name {
+  color: #007bff;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.testimonial-content {
+  font-style: italic;
+  color: #555;
+}
+
+.testimonialbtn{
+  width:4%;
+  border-radius: 50%;
+ }
