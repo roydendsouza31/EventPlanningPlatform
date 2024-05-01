@@ -9,15 +9,18 @@ const Landingpage = () => {
 
   return (
     <div className="landingpage">
+    
       <header className="header">
-      <img src={logo} height={70} alt="Logo" />
+        <img src={logo} height={70} alt="Logo" className="logo" />
         <nav className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/about">About Us</Link>
+          <Link to="/" className="btn">Home</Link>
+          <Link to="/about" className="btn">About Us</Link>
           <Link to="/signup" className="btn">Sign up</Link>
           <Link to="/login" className="btn">Log in</Link>
+          <Link to="/sellersignup" className="btn">Join as Seller</Link>
         </nav>
       </header>
+   
 
       <div>
         <h1 class="titlelandingpage">Crafting <span>Unforgettable</span><br/>Moments</h1>
@@ -25,7 +28,7 @@ const Landingpage = () => {
       </div>
 
       <div>
-        <h2>Explore Our Services</h2>
+        <h2>What We Provide</h2>
         <div className="service-container">
           <div className="row">
           <div className="service-box">Venue Selection</div>

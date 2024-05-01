@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./sellerSignup.css";
 import { Link } from "react-router-dom";
+import Navbar from "../navbar/navbar";
 
 const SellerSignup = () => {
   const [user, setUser] = useState({
@@ -83,6 +84,8 @@ const SellerSignup = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="signup_seller">
       {console.log(user)}
       <form>
@@ -192,6 +195,7 @@ const SellerSignup = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

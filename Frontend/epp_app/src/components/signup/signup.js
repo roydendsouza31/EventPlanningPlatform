@@ -3,6 +3,7 @@ import axios from "axios";
 import "./signup.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../navbar/navbar";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -63,6 +64,8 @@ const Signup = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="signup">
       <h1>Sign Up</h1>
       <form>
@@ -114,6 +117,7 @@ const Signup = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

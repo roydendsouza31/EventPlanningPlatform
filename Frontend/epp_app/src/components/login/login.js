@@ -3,6 +3,7 @@ import "./login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Navbar from "../navbar/navbar";
 
 const Login = ({ onLogin }) => {
   const navigate = useNavigate();
@@ -50,7 +51,9 @@ const Login = ({ onLogin }) => {
   };
 
   return (
+    <> <Navbar/>
     <div className="login">
+     
       <h1>Login</h1>
       <input
         type="email"
@@ -73,6 +76,7 @@ const Login = ({ onLogin }) => {
         Don't have an account? <Link to="/signup">Signup</Link>
       </p>
     </div>
+    </>
   );
 };
 

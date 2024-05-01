@@ -22,9 +22,7 @@
     transition: color 0.3s ease;
   }
   
-  .nav-links a:hover {
-    color: #0056b3;
-  }
+  
   
   .logo {
     width: 100px; /* Adjust according to your logo size */
@@ -67,3 +65,13 @@
   justify-content: center;
   align-items: center;
  }
+
+ .btn{
+  width:80%;
+ }
+
+ .nav-links{
+  width:40%;;
+ }
+
+ 
