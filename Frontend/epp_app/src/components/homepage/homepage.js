@@ -9,7 +9,9 @@ const ServiceProvidersPage = () => {
   useEffect(() => {
     const fetchTopServiceProviders = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/gettopserviceproviders");
+        const response = await axios.get(
+          "http://localhost:3000/api/gettopserviceproviders"
+        );
         setTopServiceProviders(response.data);
       } catch (error) {
         console.error("Error fetching top service providers:", error);
@@ -59,13 +61,17 @@ const Homepage = () => {
           <a href="#">Cart</a>
           <a href="#">Order History</a>
           <a href="#">Profile</a>
-          <a href="#" onClick={handleLogout}>Logout</a>
+          <a href="#" onClick={handleLogout}>
+            Logout
+          </a>
         </nav>
       </header>
-      
+
       <div className="search-bar">
-        <h1>Your Event, <span>Your Way</span></h1>
-        <div className='searchbox'>
+        <h1>
+          Your Event, <span>Your Way</span>
+        </h1>
+        <div className="searchbox">
           <select className="searchpackage">
             <option value="">Search by category</option>
             <option value="wedding">Wedding</option>
@@ -77,14 +83,17 @@ const Homepage = () => {
 
       <div className="suppliercategory">
         <div className="titlerow">
-          <h2>Suppliers Categories</h2>
+          <h2>Seller Categories</h2>
           <button onClick={toggleShowMore}>
             {showMore ? "View Less" : "View More"}
           </button>
         </div>
         <div className="suppliercategorybox">
           <div className="rowwise">
-            <Link to="/serviceproviders/photographer_videographer" className="suppliericon">
+            <Link
+              to="/serviceproviders/photographer_videographer"
+              className="suppliericon"
+            >
               <div className="image-placeholder"></div>
               <p className="category">PHOTOGRAPHER</p>
             </Link>
@@ -92,7 +101,10 @@ const Homepage = () => {
               <div className="image-placeholder"></div>
               <p className="category">VENUE PLANNERS</p>
             </Link>
-            <Link to="/serviceproviders/makeup_hairstylish" className="suppliericon">
+            <Link
+              to="/serviceproviders/makeup_hairstylish"
+              className="suppliericon"
+            >
               <div className="image-placeholder"></div>
               <p className="category">MAKEUP ARTIST</p>
             </Link>
@@ -124,15 +136,15 @@ const Homepage = () => {
 
       <div className="topservices">
         <div className="titlerow">
-          <h2>Top Services</h2>
+          <h2>Top Sellers</h2>
         </div>
         <ServiceProvidersPage />
       </div>
 
       <footer className="footer">
-  <p>© 2024 Crafting Unforgettable Moments. All rights reserved.</p>
-  <p>Contact us: contact@example.com</p>
-</footer>
+        <p>© 2024 Creations-Goa. All rights reserved.</p>
+        <p>Contact us: contact@example.com</p>
+      </footer>
     </div>
   );
 };
