@@ -8,6 +8,7 @@ import SellerSignup from "./components/sellerRegistration/sellerSignup";
 import SellerLogin from "./components/sellerLogin/sellerLogin";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Landingpage from "./components/landingpage/landingpage";
+import ServiceProvidersPage from "./components/homepage/ServiceProvidersPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -30,6 +31,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/sellersignup" element={<SellerSignup />} />
           <Route path="/" element={<Landingpage />} />
+          <Route path="/service-providers/:serviceType" element={<ServiceProvidersPage />} />
           <Route
             path="/sellerlogin"
             element={<SellerLogin onLogin={handleLogin} />}

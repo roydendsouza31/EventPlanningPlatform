@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./homepage.css";
 
@@ -53,22 +53,22 @@ const Homepage = () => {
           <button>View More</button>
         </div>
         <div className="suppliercategorybox">
-        <div className="suppliericon">
+        <Link to="/service-providers/Photographer/Videographer" className="suppliericon">
           <div className="image-placeholder"></div>
           <p className="category">PHOTOGRAPHER</p>
-        </div>
-        <div className="suppliericon">
+        </Link>
+        <Link to="/service-providers/Venue"className="suppliericon">
           <div className="image-placeholder"></div>
           <p className="category">VENUE PLANNERS</p>
-        </div>
-        <div className="suppliericon">
+        </Link>
+        <Link to="/service-providers/Makeup/Hairstylist" className="suppliericon">
           <div className="image-placeholder"></div>
           <p className="category">MAKEUP ARTIST</p>
-        </div>
-        <div className="suppliericon">
+        </Link>
+        <Link to="/service-providers/Decorator" className="suppliericon">
           <div className="image-placeholder"></div>
-          <p className="category" >DESIGNERS</p>
-        </div>
+          <p className="category" >DECORATOR</p>
+        </Link>
         </div>
       </div>
 
