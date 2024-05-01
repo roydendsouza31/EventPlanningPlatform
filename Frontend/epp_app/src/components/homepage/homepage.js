@@ -1,7 +1,37 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import "./homepage.css";
+
+const ServiceProvidersPage = () => {
+  const [topServiceProviders, setTopServiceProviders] = useState([]);
+
+  useEffect(() => {
+    const fetchTopServiceProviders = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/gettopserviceproviders");
+        setTopServiceProviders(response.data);
+      } catch (error) {
+        console.error("Error fetching top service providers:", error);
+      }
+    };
+
+    fetchTopServiceProviders();
+  }, []);
+
+  return (
+    <div className="service-providers-grid">
+      {topServiceProviders.map((provider) => (
+        <div key={provider.id} className="provider-card">
+          <img src={provider.profilePic} alt={provider.name} />
+          <p className="provider-name">{provider.name}</p>
+          <p className="provider-rating">Rating: {provider.rating}</p>
+          {/* <p className="provider-reviews">Reviews: {provider.numReviews}</p> */}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -40,8 +70,6 @@ const Homepage = () => {
             <option value="">Search by category</option>
             <option value="wedding">Wedding</option>
             <option value="birthday">Birthday</option>
-            <option value="corporate">Corporate Event</option>
-            <option value="graduation">Graduation</option>
           </select>
           <button className="searchbutton">Search</button>
         </div>
@@ -55,40 +83,39 @@ const Homepage = () => {
           </button>
         </div>
         <div className="suppliercategorybox">
-          <div class="rowwise">
-          <Link to="/serviceproviders/photographer_videographer" className="suppliericon">
-            <div className="image-placeholder"></div>
-            <p className="category">PHOTOGRAPHER</p>
-          </Link>
-          <Link to="/serviceproviders/venue" className="suppliericon">
-            <div className="image-placeholder"></div>
-            <p className="category">VENUE PLANNERS</p>
-          </Link>
-          <Link to="/serviceproviders/makeup_hairstylish" className="suppliericon">
-            <div className="image-placeholder"></div>
-            <p className="category">MAKEUP ARTIST</p>
-          </Link>
-          <Link to="/serviceproviders/decorator" className="suppliericon">
-            <div className="image-placeholder"></div>
-            <p className="category">DECORATOR</p>
-          </Link>
+          <div className="rowwise">
+            <Link to="/serviceproviders/photographer_videographer" className="suppliericon">
+              <div className="image-placeholder"></div>
+              <p className="category">PHOTOGRAPHER</p>
+            </Link>
+            <Link to="/serviceproviders/venue" className="suppliericon">
+              <div className="image-placeholder"></div>
+              <p className="category">VENUE PLANNERS</p>
+            </Link>
+            <Link to="/serviceproviders/makeup_hairstylish" className="suppliericon">
+              <div className="image-placeholder"></div>
+              <p className="category">MAKEUP ARTIST</p>
+            </Link>
+            <Link to="/serviceproviders/decorator" className="suppliericon">
+              <div className="image-placeholder"></div>
+              <p className="category">DECORATOR</p>
+            </Link>
           </div>
-
           {showMore && (
             <>
-            <div class="rowwise">
-              <Link to="/serviceproviders/Music" className="suppliericon">
-                <div className="image-placeholder"></div>
-                <p className="category">MUSIC</p>
-              </Link>
-              <Link to="/serviceproviders/emcee" className="suppliericon">
-                <div className="image-placeholder"></div>
-                <p className="category">EMCEE</p>
-              </Link>
-              <Link to="/serviceproviders/Catering" className="suppliericon">
-                <div className="image-placeholder"></div>
-                <p className="category">CATERING</p>
-              </Link>
+              <div className="rowwise">
+                <Link to="/serviceproviders/Music" className="suppliericon">
+                  <div className="image-placeholder"></div>
+                  <p className="category">MUSIC</p>
+                </Link>
+                <Link to="/serviceproviders/emcee" className="suppliericon">
+                  <div className="image-placeholder"></div>
+                  <p className="category">EMCEE</p>
+                </Link>
+                <Link to="/serviceproviders/Catering" className="suppliericon">
+                  <div className="image-placeholder"></div>
+                  <p className="category">CATERING</p>
+                </Link>
               </div>
             </>
           )}
@@ -98,9 +125,14 @@ const Homepage = () => {
       <div className="topservices">
         <div className="titlerow">
           <h2>Top Services</h2>
-          <button>View More</button>
         </div>
+        <ServiceProvidersPage />
       </div>
+
+      <footer className="footer">
+  <p>© 2024 Crafting Unforgettable Moments. All rights reserved.</p>
+  <p>Contact us: contact@example.com</p>
+</footer>
     </div>
   );
 };
