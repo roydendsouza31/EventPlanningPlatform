@@ -1,0 +1,46 @@
+/* AboutUs container */
+.AboutUs {
+    background-color: rgb(195, 205, 211);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5%;
+    padding: 10px;
+    width: 80%;
+    
+  }
+  
+  /* Logo */
+  .logo {
+    margin-bottom: 20px;
+
+  }
+  
+  .logo img {
+    max-width: 200px; /* Adjust according to your logo size */
+  }
+  
+  /* Content */
+  .content {
+    text-align: center;
+  }
+  
+  .content h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .content p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+  }
+  
+  /* Founders */
+  .founders {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  

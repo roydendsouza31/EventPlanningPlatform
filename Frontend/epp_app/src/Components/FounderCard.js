@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/foundercard.css';
 
 const FounderCard = ({ founder }) => {
   return (
@@ -7,7 +8,7 @@ const FounderCard = ({ founder }) => {
       <div className="info">
         <h4>{founder.name}</h4>
         <p>{founder.position}</p>
-        <p>{founder.bio}</p>
+        <p>{founder.address}</p>
       </div>
     </div>
   );

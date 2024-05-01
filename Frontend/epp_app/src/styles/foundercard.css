@@ -1,0 +1,41 @@
+/* Founder card container */
+.founder-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Founder image */
+  .founder-card img {
+    width: 100px; /* Adjust according to your preference */
+    height: 100px; /* Adjust according to your preference */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+  }
+  
+  /* Founder name */
+  .founder-card .info h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  /* Founder position */
+  .founder-card .info p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Founder address */
+  .founder-card .info p:last-child {
+    margin-bottom: 0;
+  }
+  

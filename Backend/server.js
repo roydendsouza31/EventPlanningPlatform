@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/WebDev", {
+  .connect("mongodb://127.0.0.1:27017/WebDev", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -38,10 +38,10 @@ const testimonialSchema = new mongoose.Schema({
 const Testimonial = mongoose.model("Testimonial", testimonialSchema);
 
 // Route to fetch testimonials
-app.get("/api/testimonials", async (req, res) => {
+app.get("/api/testimonial", async (req, res) => {
   try {
-    const testimonials = await Testimonial.find();
-    res.json(testimonials);
+    const testimonial = await Testimonial.find();
+    res.json(testimonial);
   } catch (error) {
     console.error("Error fetching testimonials:", error);
     res.status(500).json({ error: "Internal Server Error" });
