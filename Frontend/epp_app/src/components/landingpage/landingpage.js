@@ -83,10 +83,13 @@ const Landingpage = () => {
           ))}
            <button className="testimonialbtn" onClick={nextTestimonial}>Next</button>
         </div>
-       
-
-
       </div>
+
+      <footer className="footer">
+  <p>© 2024 Crafting Unforgettable Moments. All rights reserved.</p>
+  <p>Contact us: contact@example.com</p>
+</footer>
+
     </div>
   );
 };
