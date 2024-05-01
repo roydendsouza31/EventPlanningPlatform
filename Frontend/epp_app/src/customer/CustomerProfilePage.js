@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./customer.css";
 import { useNavigate } from "react-router-dom";
-
+import EventCalendar from "./EventCalender";
 const CustomerProfilePage = () => {
   let navigate = useNavigate();
+  const [events, setEvents] = useState([
+    { title: "Meeting", start: new Date() },
+    { title: "Birthday Party", start: "2024-04-15" },
+  ]);
   const [customerData, setCustomerData] = useState({
     name: "",
     email: "",
@@ -128,6 +132,10 @@ const CustomerProfilePage = () => {
         <button onClick={() => setIsEditing(!isEditing)}>
           {isEditing ? "Cancel" : "Edit"}
         </button>
+      </div>
+      <div>
+        <h1>Event Calendar</h1>
+        <EventCalendar events={[{ title: "Meeting", start: new Date() }]} />
       </div>
     </div>
   );

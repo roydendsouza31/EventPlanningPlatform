@@ -108,12 +108,18 @@ app.get("/api/testimonials", async (req, res) => {
 // MongoDB connection
 
 // Customer Model
-const Customer = mongoose.model("Customer", {
+//const mongoose = require("mongoose");
+
+const customerSchema = new mongoose.Schema({
   name: String,
   email: String,
   address: String,
   phoneNumber: String,
 });
+
+const Customer = mongoose.model("Customer", customerSchema);
+
+module.exports = Customer;
 
 // Routes
 app.get("/api/customer", async (req, res) => {
@@ -125,21 +131,34 @@ app.get("/api/customer", async (req, res) => {
   }
 });
 
-app.put("/api/customer/:customerId", async (req, res) => {
-  const customerId = req.params.customerId;
+app.put("/api/customer", async (req, res) => {
   try {
-    const customer = await Customer.findById(customerId);
-    if (customer) {
-      customer.set(req.body);
-      await customer.save();
-      res.json({ message: "Customer data updated successfully" });
-    } else {
-      res.status(404).json({ message: "Customer not found" });
-    }
+    const updatedCustomerData = req.body;
+    const customerData = await Customer.findOneAndUpdate(
+      {},
+      updatedCustomerData,
+      { new: true }
+    );
+    res.json(customerData);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
+// app.put("/api/customer/:customerId", async (req, res) => {
+//   const customerId = req.params.customerId;
+//   try {
+//     const customer = await Customer.findById(customerId);
+//     if (customer) {
+//       customer.set(req.body);
+//       await customer.save();
+//       res.json({ message: "Customer data updated successfully" });
+//     } else {
+//       res.status(404).json({ message: "Customer not found" });
+//     }
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 
 //***********calender */
 
