@@ -1,0 +1,76 @@
+body {
+    background-image: url('../public/images/bg1.jpg');
+    background-size: cover; /* Cover the entire body with the background image */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Set position relative for absolute positioning of text */
+}
+#header {
+    background:none;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#logo {
+    width: 150px;
+    height: auto;
+}
+#buttons {
+    display: flex;
+    gap: 10px;
+}
+.button {
+    background:none;
+    color: rgb(19, 13, 13);
+    padding: 8px 16px;
+    border: solid 3px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    font-size:20px;
+    text-decoration: none;
+}
+.text-container {
+    text-align: center;
+}
+.website-name {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.description {
+    font-size: 20px;
+}
+.testimonial-container {
+    color: aliceblue;
+    text-align: center;
+    margin-top: 500px; /* Add margin to separate testimonials from other content */
+}
+.testimonial {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    max-width: 500px;
+    margin: 0 auto 20px; /* Center horizontally and add margin between testimonials */
+}
+.testimonial p {
+    margin: 10px 0;
+}
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.profile .name {
+    font-weight: bold;
+}
