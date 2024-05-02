@@ -90,7 +90,7 @@ function App() {
           <h2>Customer Support</h2>
           <p>Contact us at:</p>
           <p>Phone: 123-456-7890</p>
-          <p>Email: support@example.com</p>
+          <p>Email: info@creationsgoa.com</p>
         </div>
       </div>
     </div>
