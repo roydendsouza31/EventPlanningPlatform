@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./homepage.css";
+import "./customerHomepage.css";
 import { useEffect } from "react";
 import logo from "./assets/logo.png";
 import camera from "./assets/camera.png";
