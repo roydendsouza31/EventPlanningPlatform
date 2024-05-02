@@ -1,10 +1,11 @@
 import React from "react";
-import pro from "./pro2.jpg";
-import pro1 from "./pro3.jpg";
-import pro2 from "./pro4.webp";
-import pro3 from "./pro5.png";
-import pro4 from "./profile1.jpg";
+import pro from "./alishka.png";
+import pro1 from "./allieah.png";
+import pro2 from "./rahul.png";
+import pro3 from "./royden.png";
+import pro4 from "./riddhi.png";
 import Navbar from "../navbar/navbar";
+import "./aboutpage.css"
 
 const AboutUs = () => {
   return (
@@ -46,75 +47,75 @@ const AboutUs = () => {
                 your expectations.
               </i>
             </p>
-            <h2>Meet The Minds Behind The Magic</h2>
+            <h2 className="title2">Meet The Minds Behind The Magic</h2>
             <div className="row">
               {/* First Founder Card */}
               <div className="col-md-4">
-                <div className="card mb-3">
+                <div className="mb-3 contributor">
                   <img src={pro2} alt="Royden" className="card-img-top" />
                   <div className="card-body">
-                    <h5 className="card-title">Royden</h5>
+                    <h5 style={{ textAlign: "center" }} className="card-title">Royden</h5>
                     <p className="card-text">
                       <strong>Email:</strong>{" "}
-                      <a href="mca.2309@unigoa.ac.in">mca.2309@unigoa.ac.in</a>
+                      <a style={{ textDecoration: "none" }}href="mca.2309@unigoa.ac.in">mca.2309@unigoa.ac.in</a>
                     </p>
                   </div>
                 </div>
               </div>
               {/* Second Founder Card */}
-              <div className="col-md-4">
-                <div className="card mb-3">
+              <div className="col-md-4  contributor">
+                <div className="mb-3">
                   <img src={pro} alt="Alishka" className="card-img-top" />
                   <div className="card-body">
-                    <h5 className="card-title">Alishka</h5>
+                    <h5 style={{ textAlign: "center" }}  className="card-title">Alishka</h5>
                     <p className="card-text">
                       <strong>Email:</strong>{" "}
-                      <a href="mca.2313@unigoa.ac.in">mca.2313@unigoa.ac.in</a>
+                      <a style={{ textDecoration: "none" }} href="mca.2313@unigoa.ac.in">mca.2313@unigoa.ac.in</a>
                     </p>
                   </div>
                 </div>
               </div>
               {/* Third Founder Card */}
               <div className="col-md-4">
-                <div className="card mb-3">
+                <div className="mb-3 contributor">
                   <img src={pro1} alt="Allieah" className="card-img-top" />
                   <div className="card-body">
-                    <h5 className="card-title">Allieah</h5>
+                    <h5 style={{ textAlign: "center" }}  className="card-title">Allieah</h5>
                     <p className="card-text">
                       <strong>Email:</strong>{" "}
-                      <a href="mca.2315@unigoa.ac.in">mca.2315@unigoa.ac.in</a>
+                      <a style={{ textDecoration: "none" }} href="mca.2315@unigoa.ac.in">mca.2315@unigoa.ac.in</a>
                     </p>
                   </div>
                 </div>
               </div>
               {/* Fourth Founder Card */}
               <div className="col-md-4">
-                <div className="card mb-3">
+                <div className=" mb-3 contributor">
                   <img src={pro3} alt="Rahul" className="card-img-top" />
                   <div className="card-body">
-                    <h5 className="card-title">Rahul</h5>
+                    <h5 style={{ textAlign: "center" }}  className="card-title">Rahul</h5>
                     <p className="card-text">
                       <strong>Email:</strong>{" "}
-                      <a href="mca.2348@unigoa.ac.in">mca.2348@unigoa.ac.in</a>
+                      <a style={{ textDecoration: "none" }} href="mca.2348@unigoa.ac.in">mca.2348@unigoa.ac.in</a>
                     </p>
                   </div>
                 </div>
               </div>
               {/* Fifth Founder Card */}
               <div className="col-md-4">
-                <div className="card mb-3">
+                <div className=" mb-3 contributor">
                   <img src={pro4} alt="Riddhi" className="card-img-top" />
                   <div className="card-body">
-                    <h5 className="card-title">Riddhi</h5>
+                    <h5 style={{ textAlign: "center" }}  className="card-title">Riddhi</h5>
                     <p className="card-text">
                       <strong>Email:</strong>{" "}
-                      <a href="mca.2342@unigoa.ac.in">mca.2342@unigoa.ac.in</a>
+                      <a style={{ textDecoration: "none" }} href="mca.2342@unigoa.ac.in">mca.2342@unigoa.ac.in</a>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <h3>
+            <h3 class="footertext">
               <i>Get ready to create your dream event with us!</i>
             </h3>
           </div>

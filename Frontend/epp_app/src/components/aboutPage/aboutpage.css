@@ -1,0 +1,14 @@
+.title2{
+    display: flex;
+    justify-content: center;
+    font-size: -webkit-xxx-large;
+    align-items: center;
+    margin-top: 10%;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.footertext{
+    text-align: center;
+    margin:10%;
+}
