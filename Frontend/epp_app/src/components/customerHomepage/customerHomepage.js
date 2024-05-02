@@ -2,6 +2,39 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./homepage.css";
+import { useEffect } from "react";
+
+const ServiceProvidersPage = () => {
+  const [topServiceProviders, setTopServiceProviders] = useState([]);
+
+  useEffect(() => {
+    const fetchTopServiceProviders = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/api/gettopserviceproviders"
+        );
+        setTopServiceProviders(response.data);
+      } catch (error) {
+        console.error("Error fetching top service providers:", error);
+      }
+    };
+
+    fetchTopServiceProviders();
+  }, []);
+
+  return (
+    <div className="service-providers-grid_homepage">
+      {topServiceProviders.map((provider) => (
+        <div key={provider.id} className="provider-card">
+          <img src={provider.profilePic} alt={provider.name} />
+          <p className="provider-name">{provider.name}</p>
+          <p className="provider-rating">Rating: {provider.rating}</p>
+          <p className="provider-reviews">Reviews: {provider.numReviews}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const CustomerHomepage = () => {
   const navigate = useNavigate();
@@ -23,51 +56,20 @@ const CustomerHomepage = () => {
 
   return (
     <div className="homepage">
-      <header className="header navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
-          <a className="navbar-brand" href="/">
-            <img src="/logo.png" alt="Logo" className="logo" />
+      <header className="header">
+        <img
+          src="/Users/royden/Desktop/EventPlanningPlatform/Frontend/epp_app/src/components/customerHomepage/logo.png"
+          alt="Logo"
+          className="logo"
+        />
+        <nav className="nav-links">
+          <a href="/customerhomepage">Cart</a>
+          <a href="/customerhomepage">Order History</a>
+          <a href="/customerhomepage">Profile</a>
+          <a href="/customerhomepage" onClick={handleLogout}>
+            Logout
           </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="/customerhomepage">
-                  Cart
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/customerhomepage">
-                  Order History
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/customerhomepage">
-                  Profile
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="/customerhomepage"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        </nav>
       </header>
 
       <div className="search-bar">
