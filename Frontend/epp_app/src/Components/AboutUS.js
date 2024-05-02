@@ -1,11 +1,17 @@
 import React from 'react';
 import '../styles/aboutus.css';
+import pro from "../assets/pro2.jpg"
+import pro1 from "../assets/pro3.jpg"
+import pro2 from "../assets/pro4.webp"
+import pro3 from "../assets/pro5.png"
+import pro4 from "../assets/profile1.jpg"
+import logo from "../assets/logo.png"
 
 const AboutUs = () => {
   return (
     <div className="AboutUs">
       <div className="logo">
-      <img src="../assets/logo.png" alt="Company Logo" />
+      <img src={logo} alt="Company Logo" />
       </div>
       <div className="content">
         <h2><i><u>About Us</u></i></h2>
@@ -22,52 +28,47 @@ const AboutUs = () => {
         <div className="founders">
           {/* First Founder Card */}
           <div className="founder-card">
-            <img src="./founder.webp" alt="Royden" className="founder-image" />
+            <img src={pro2} alt="Royden" className="founder-image" />
             <div className="founder-details">
               <h4>Royden</h4>
-              <p><strong>Position:</strong> Member1</p>
-              <p><strong>Email:</strong> <a href="mailto:royden@gmail.com">royden@gmail.com</a></p>
+              <p><strong>Email:</strong> <a href="mca.2309@unigoa.ac.in">mca.2309@unigoa.ac.in</a></p>
 
             </div>
           </div>
 
           {/* Second Founder Card */}
           <div className="founder-card">
-            <img src="./founder2.webp" alt="Alishka" className="founder-image" />
+            <img src={pro} alt="Alishka" className="founder-image" />
             <div className="founder-details">
               <h4>Alishka</h4>
-              <p><strong>Position:</strong> Member2</p>
-              <p><strong>Email:</strong> <a href="mailto:Alihska@gmail.com">Alishka@gmail.com</a></p>
+              <p><strong>Email:</strong> <a href="mca.2313@unigoa.ac.in">mca.2313@unigoa.ac.in</a></p>
             </div>
           </div>
 
           {/* Third Founder Card */}
           <div className="founder-card">
-            <img src="./founder3.webp" alt="Allieah" className="founder-image" />
+            <img src={pro1} alt="Allieah" className="founder-image" />
             <div className="founder-details">
               <h4>Allieah</h4>
-              <p><strong>Position:</strong> Member3</p>
-              <p><strong>Email:</strong> <a href="mailto:allieah@gmail.com">allieah@gmail.com</a></p>
+              <p><strong>Email:</strong> <a href="mca.2315@unigoa.ac.in">mca.2315@unigoa.ac.in</a></p>
             </div>
           </div>
 
           {/* Fourth Founder Card */}
           <div className="founder-card">
-            <img src="./founder4.webp" alt="Rahul" className="founder-image" />
+            <img src={pro3} alt="Rahul" className="founder-image" />
             <div className="founder-details">
               <h4>Rahul</h4>
-              <p><strong>Position:</strong> Member4</p>
-              <p><strong>Email:</strong> <a href="mailto:rahul@gmail.com">Rahul@gmail.com</a></p>
+              <p><strong>Email:</strong> <a href="mca.2348@unigoa.ac.in">mca.2348@unigoa.ac.in</a></p>
             </div>
           </div>
 
           {/* Fifth Founder Card */}
           <div className="founder-card">
-            <img src="./founder5.webp" alt="Riddhi" className="founder-image" />
+            <img src={pro4} alt="Riddhi" className="founder-image" />
             <div className="founder-details">
               <h4>Riddhi</h4>
-              <p><strong>Position:</strong> Member5</p>
-              <p><strong>Email:</strong> <a href="mailto:riddhi@gmail.com">riddhi@gmail.com</a></p>
+              <p><strong>Email:</strong> <a href="mca.2342@unigoa.ac.in">mca.2342@unigoa.ac.in</a></p>
             </div>
           </div>
         </div>
