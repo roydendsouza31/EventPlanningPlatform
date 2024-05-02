@@ -3,6 +3,7 @@ const router = express.Router();
 const Seller = require("../models/seller");
 const Testimonial = require("../models/testimonial");
 const Product = require("../models/product");
+const Customer = require("../models/customer");
 
 // Route to get all service providers of a specific service type
 router.get("/getallserviceproviders/:servicetype", async (req, res) => {
@@ -85,27 +86,12 @@ router.post("/addtocart", async (req, res) => {
 //Route to add a product
 router.post("/addproduct", async (req, res) => {
   try {
-    const { name, price } = req.body;
-    console.log(name, price);
-    const product = await Product.create({ name, price });
-    res.status(201).json(product);
+    const { name, price, selleremail } = req.body;
+    const response = await Product.create({ name, price, selleremail });
+    res.status(201).json(response);
   } catch (error) {
     console.error("Error adding product:", error);
     res.status(500).json({ error: "Failed to add product" });
-  }
-});
-
-//Route to put image for product
-router.put("/addproductimage", async (req, res) => {
-  try {
-    const { productId, image } = req.body;
-    const product = await Product.findById(productId);
-    product.image = image;
-    await product.save();
-    res.status(200).json(product);
-  } catch (error) {
-    console.error("Error adding image to product:", error);
-    res.status(500).json({ error: "Failed to add image to product" });
   }
 });
 
