@@ -16,7 +16,7 @@ const SellerHomepage = () => {
       const apiUrl = `http://localhost:3001/api/getproducts/${email}`;
       console.log(apiUrl);
       const res = await axios.get(apiUrl);
-  
+
       console.log("Products fetched successfully");
       console.log(res.data);
       setProducts(res.data);
@@ -24,7 +24,6 @@ const SellerHomepage = () => {
       console.error("Error fetching products:", error);
     }
   };
-  
 
   const handleLogout = async () => {
     try {
@@ -104,17 +103,20 @@ const SellerHomepage = () => {
 
         <div>
           <h2>Your products</h2>
-          <button className="btn btn-primary" onClick={handleDisplayProducts}>
+          <button
+            className="btn btn-primary mb-3"
+            onClick={handleDisplayProducts}
+            style={{ width: "200px" }}
+          >
             Display all products
           </button>
           <div className="row justify-content-center">
             {products.map((product, index) => (
-              <div key={index} className="col-md-4">
+              <div key={index} className="col-md-4 mb-3">
                 <div className="card">
                   <div className="card-body">
                     <h5 className="card-title">{product.name}</h5>
                     <p className="card-text">Price: {product.price}</p>
-                    <button className="btn btn-danger">Delete</button>
                   </div>
                 </div>
               </div>
