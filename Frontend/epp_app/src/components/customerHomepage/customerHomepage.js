@@ -23,16 +23,51 @@ const CustomerHomepage = () => {
 
   return (
     <div className="homepage">
-      <header className="header">
-        <img src="" alt="Logo" className="logo" />
-        <nav className="nav-links">
-          <a href="/customerhomepage">Cart</a>
-          <a href="/customerhomepage">Order History</a>
-          <a href="/customerhomepage">Profile</a>
-          <a href="/customerhomepage" onClick={handleLogout}>
-            Logout
+      <header className="header navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+          <a className="navbar-brand" href="/">
+            <img src="/logo.png" alt="Logo" className="logo" />
           </a>
-        </nav>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <a className="nav-link" href="/customerhomepage">
+                  Cart
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/customerhomepage">
+                  Order History
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/customerhomepage">
+                  Profile
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  href="/customerhomepage"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </header>
 
       <div className="search-bar">
@@ -41,7 +76,7 @@ const CustomerHomepage = () => {
         </h1>
         <div className="searchbox">
           <select className="searchpackage">
-            <option value="">Search by category</option>
+            <option value="">Search packages by category</option>
             <option value="wedding">Wedding</option>
             <option value="birthday">Birthday</option>
           </select>

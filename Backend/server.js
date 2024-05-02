@@ -1,6 +1,8 @@
 // Connect to MongoDB
 const mongoose = require("mongoose");
 const connectionString = "mongodb://localhost:27017/creationsgoa";
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
 
 function main() {
   try {
@@ -15,8 +17,14 @@ main();
 
 const express = require("express");
 const cors = require("cors");
-const session = require("express-session");
-const store = new session.MemoryStore();
+const store = new MongoDBStore({
+  uri: connectionString, // MongoDB connection string
+  collection: "sessions", // Collection name for sessions
+});
+
+store.on("error", function (error) {
+  console.log(error);
+});
 
 const {
   customerSignupRouter,
@@ -48,7 +56,7 @@ app.use(
     },
     saveUninitialized: false,
     resave: false,
-    store,
+    store: store, // Use MongoDBStore for session storage
   })
 );
 
