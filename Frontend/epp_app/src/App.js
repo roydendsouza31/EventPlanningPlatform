@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
-import Signup from "./components/signup/signup";
-import Homepage from "./components/homepage/homepage";
-import Login from "./components/login/login";
-import SellerSignup from "./components/sellerRegistration/sellerSignup";
+import CustomerSignup from "./components/customerSignup/customerSignup";
+import CustomerHomepage from "./components/customerHomepage/customerHomepage";
+import Login from "./components/customerLogin/customerLogin";
+import SellerSignup from "./components/sellerSignup/sellerSignup";
 import SellerLogin from "./components/sellerLogin/sellerLogin";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Landingpage from "./components/landingpage/landingpage";
-import ServiceProvidersPage from "./components/homepage/ServiceProvidersPage";
+import ServiceProvidersPage from "./components/customerHomepage/ServiceProvidersPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -21,21 +21,30 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landingpage />} />
-          <Route
-            exact
-            path="/Homepage"
-            element={authenticated ? <Homepage /> : <Navigate to="/login" />}
-          />
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/customersignup" element={<CustomerSignup />} />
           <Route path="/sellersignup" element={<SellerSignup />} />
           <Route
-            path="/serviceproviders/:serviceType"
-            element={<ServiceProvidersPage />}
+            path="/customerlogin"
+            element={<Login onLogin={handleLogin} />}
           />
           <Route
             path="/sellerlogin"
             element={<SellerLogin onLogin={handleLogin} />}
+          />
+          <Route
+            exact
+            path="/customerhomepage"
+            element={
+              authenticated ? (
+                <CustomerHomepage />
+              ) : (
+                <Navigate to="/customerlogin" />
+              )
+            }
+          />
+          <Route
+            path="/serviceproviders/:serviceType"
+            element={<ServiceProvidersPage />}
           />
         </Routes>
       </BrowserRouter>

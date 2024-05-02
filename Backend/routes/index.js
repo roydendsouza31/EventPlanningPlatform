@@ -1,14 +1,14 @@
-const signupRouter = require("./signup");
-const loginRouter = require("./login");
-const profileRouter = require("./profile");
+const customerSignupRouter = require("./customerSignup");
+const customerLoginRouter = require("./customerLogin");
+const customerProfileRouter = require("./customerProfile");
 const sellerSignupRouter = require("./sellersignup");
 const sellerLoginRouter = require("./sellerlogin");
 const apiRouter = require("./api");
 
 module.exports = {
-  signupRouter,
-  loginRouter,
-  profileRouter,
+  customerSignupRouter,
+  customerLoginRouter,
+  customerProfileRouter,
   sellerSignupRouter,
   sellerLoginRouter,
   apiRouter,

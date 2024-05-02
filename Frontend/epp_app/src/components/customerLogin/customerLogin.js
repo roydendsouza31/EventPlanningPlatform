@@ -34,13 +34,13 @@ const Login = ({ onLogin }) => {
       alert("Please enter a valid email address");
     } else {
       axios
-        .post("http://localhost:3001/sellerlogin", user)
+        .post("http://localhost:3001/customerlogin", user)
         .then((res) => {
           if (res.status === 200) {
-            onLogin();
-            navigate("/homepage");
+            onLogin(); // Update authentication state
+            navigate("/CustomerHomepage");
           } else {
-            alert("Seller not found. Please signup.");
+            alert("User not found. Please signup.");
           }
         })
         .catch((error) => {
@@ -55,9 +55,9 @@ const Login = ({ onLogin }) => {
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-6">
-            <div className="sellerLogin card">
+            <div className="card">
               <div className="card-body">
-                <h1 className="card-title text-center mb-4">Seller Login</h1>
+                <h1 className="card-title text-center mb-4">Login</h1>
                 <form onSubmit={login}>
                   <div className="mb-3 mx-5">
                     <input
@@ -82,15 +82,15 @@ const Login = ({ onLogin }) => {
                   <button
                     type="submit"
                     style={{ width: "100%" }}
-                    className="btn btn-primary btn-block"
+                    className="btn btn-primary btn-block "
                   >
                     Login
                   </button>
                 </form>
                 <p className="text-center mt-3">
                   Don't have an account?{" "}
-                  <Link to="/sellersignup" style={{ textDecoration: "none" }}>
-                    Join as seller
+                  <Link style={{ textDecoration: "none" }} to="/customersignup">
+                    Signup
                   </Link>
                 </p>
               </div>

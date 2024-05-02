@@ -1,49 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./homepage.css";
 
-const ServiceProvidersPage = () => {
-  const [topServiceProviders, setTopServiceProviders] = useState([]);
-
-  useEffect(() => {
-    const fetchTopServiceProviders = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3000/api/gettopserviceproviders"
-        );
-        setTopServiceProviders(response.data);
-      } catch (error) {
-        console.error("Error fetching top service providers:", error);
-      }
-    };
-
-    fetchTopServiceProviders();
-  }, []);
-
-  return (
-    <div className="service-providers-grid_homepage">
-      {topServiceProviders.map((provider) => (
-        <div key={provider.id} className="provider-card">
-          <img src={provider.profilePic} alt={provider.name} />
-          <p className="provider-name">{provider.name}</p>
-          <p className="provider-rating">Rating: {provider.rating}</p>
-          {/* <p className="provider-reviews">Reviews: {provider.numReviews}</p> */}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const Homepage = () => {
+const CustomerHomepage = () => {
   const navigate = useNavigate();
   const [showMore, setShowMore] = useState(false);
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:3000/profile/logout");
+      await axios.post("http://localhost:3001/profile/logout");
       sessionStorage.clear();
-      navigate("/login");
+      navigate("/customerlogin");
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -58,10 +26,10 @@ const Homepage = () => {
       <header className="header">
         <img src="" alt="Logo" className="logo" />
         <nav className="nav-links">
-          <a href="#">Cart</a>
-          <a href="#">Order History</a>
-          <a href="#">Profile</a>
-          <a href="#" onClick={handleLogout}>
+          <a href="/customerhomepage">Cart</a>
+          <a href="/customerhomepage">Order History</a>
+          <a href="/customerhomepage">Profile</a>
+          <a href="/customerhomepage" onClick={handleLogout}>
             Logout
           </a>
         </nav>
@@ -138,15 +106,39 @@ const Homepage = () => {
         <div className="titlerow">
           <h2>Top Sellers</h2>
         </div>
-        <ServiceProvidersPage />
       </div>
 
       <footer className="footer">
-        <p>© 2024 Creations-Goa. All rights reserved.</p>
-        <p>Contact us: contact@example.com</p>
+        <div className="container">
+          <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p className="col-md-4 mb-0 text-muted">
+              © 2021 Creations-Goa, Inc
+            </p>
+
+            <a
+              href="/"
+              className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+            >
+              <svg className="bi me-2" width="40" height="32"></svg>
+            </a>
+
+            <ul className="nav col-md-4 justify-content-end">
+              <li className="nav-item">
+                <a href="/" className="nav-link px-2 text-muted">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="/about" className="nav-link px-2 text-muted">
+                  About
+                </a>
+              </li>
+            </ul>
+          </footer>
+        </div>
       </footer>
     </div>
   );
 };
 
-export default Homepage;
+export default CustomerHomepage;

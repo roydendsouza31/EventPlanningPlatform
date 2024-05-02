@@ -3,10 +3,9 @@ const { createHashedPassword } = require("../library/bcrypt");
 const { CustomerService } = require("../services");
 
 router.post("/", async (req, res) => {
- 
   try {
     const object = req.body;
-    console.log("workding ",object);
+    console.log("workding ", object);
     const checkEmail = await CustomerService.findByEmail(object.email);
 
     if (checkEmail) {

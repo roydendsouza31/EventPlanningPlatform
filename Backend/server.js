@@ -19,16 +19,16 @@ const session = require("express-session");
 const store = new session.MemoryStore();
 
 const {
-  signupRouter,
+  customerSignupRouter,
   sellerSignupRouter,
-  loginRouter,
+  customerLoginRouter,
   sellerLoginRouter,
-  profileRouter,
+  customerProfileRouter,
   apiRouter,
 } = require("./routes");
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(express.json({ limit: "50mb" }));
 app.use(
@@ -52,16 +52,12 @@ app.use(
   })
 );
 
-app.use("/signup", signupRouter);
-app.use("/login", loginRouter);
-app.use("/profile", profileRouter);
+app.use("/customersignup", customerSignupRouter);
+app.use("/customerlogin", customerLoginRouter);
+app.use("/profile", customerProfileRouter);
 app.use("/sellersignup", sellerSignupRouter);
 app.use("/sellerlogin", sellerLoginRouter);
 app.use("/api", apiRouter);
-
-app.get("/", (req, res) => {
-  res.redirect("/login");
-});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
