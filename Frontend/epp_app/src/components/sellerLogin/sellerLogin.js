@@ -84,7 +84,7 @@ const Login = ({ onLogin }) => {
                   </div>
                   <button
                     type="submit"
-                    style={{ width: "100%" }}
+                    style={{ marginLeft:"50px",width:"84%" }}
                     className="btn btn-primary btn-block"
                   >
                     Login
