@@ -30,7 +30,7 @@
   
   /* Additional styling for the AboutUs component */
   .AboutUs {
-    background-color: rgb(205, 234, 236);
+    
     display: flex;
     flex-direction: column;
     align-items: center;
