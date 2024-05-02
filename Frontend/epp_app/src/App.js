@@ -9,7 +9,7 @@ import SellerLogin from "./components/sellerLogin/sellerLogin";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Landingpage from "./components/landingpage/landingpage";
 import ServiceProvidersPage from "./components/customerHomepage/ServiceProvidersPage";
-import AboutUs from "./components/aboutPage/abooutPage";
+import AboutUs from "./components/aboutPage/aboutPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -61,8 +61,6 @@ function App() {
             element={<ServiceProvidersPage />}
           />
         </Routes>
-        
-
       </BrowserRouter>
     </div>
   );

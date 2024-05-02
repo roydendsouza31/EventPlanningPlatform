@@ -107,7 +107,7 @@ const Landingpage = () => {
               </a>
             </li>
             <li class="nav-item">
-              <a href="/about" class="nav-link px-2 text-muted">
+              <a href="/aboutpage" class="nav-link px-2 text-muted">
                 About
               </a>
             </li>
