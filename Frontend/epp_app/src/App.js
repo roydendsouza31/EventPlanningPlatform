@@ -9,6 +9,7 @@ import SellerLogin from "./components/sellerLogin/sellerLogin";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Landingpage from "./components/landingpage/landingpage";
 import ServiceProvidersPage from "./components/customerHomepage/ServiceProvidersPage";
+import AboutUs from "./components/aboutPage/abooutPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Landingpage />} />
           <Route path="/customersignup" element={<CustomerSignup />} />
           <Route path="/sellersignup" element={<SellerSignup />} />
+          <Route path="/aboutpage" element={<AboutUs />} />
           <Route
             path="/customerlogin"
             element={<Login onLogin={handleLogin} />}
