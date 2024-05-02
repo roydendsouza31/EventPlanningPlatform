@@ -6,6 +6,7 @@ const CustomerSchema = new mongoose.Schema({
   email: { type: String, required: true, minlength: 2 },
   password: { type: String, required: true, minlength: 3 },
   image: { type: Buffer },
+  cart: { type: Array },
 });
 
 module.exports = mongoose.model("Customer", CustomerSchema);

@@ -37,7 +37,7 @@ const ServiceProvidersPage = () => {
           <img src={provider.profilePic} alt={provider.name} />
           <p className="provider-name">{provider.name}</p>
           <p className="provider-rating">Rating: {provider.rating}</p>
-          <p className="provider-reviews">Reviews: {provider.numReviews}</p>
+          {/* <p className="provider-reviews">Reviews: {provider.numReviews}</p> */}
         </div>
       ))}
     </div>

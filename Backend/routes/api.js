@@ -67,4 +67,44 @@ router.get("/getserviceprovider/:id", async (req, res) => {
   }
 });
 
+//Route to add item to customers cart
+router.post("/addtocart", async (req, res) => {
+  try {
+    const { customerId, productID } = req.body;
+    const customer = await Customer.findById(customerId);
+    customer.cart.push(productID);
+    await customer.save();
+    res.status(201).json(customer);
+  } catch (error) {
+    console.error("Error adding item to cart:", error);
+    res.status(500).json({ error: "Failed to add item to cart" });
+  }
+});
+
+//Route to add a product
+router.post("/addproduct", async (req, res) => {
+  try {
+    const { name, price, sellerId } = req.body;
+    const product = await Product.create({ name, price, seller: sellerId });
+    res.status(201).json(product);
+  } catch (error) {
+    console.error("Error adding product:", error);
+    res.status(500).json({ error: "Failed to add product" });
+  }
+});
+
+//Route to put image for product
+router.put("/addproductimage", async (req, res) => {
+  try {
+    const { productId, image } = req.body;
+    const product = await Product.findById(productId);
+    product.image = image;
+    await product.save();
+    res.status(200).json(product);
+  } catch (error) {
+    console.error("Error adding image to product:", error);
+    res.status(500).json({ error: "Failed to add image to product" });
+  }
+});
+
 module.exports = router;
