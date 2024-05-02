@@ -9,19 +9,22 @@ const SellerHomepage = () => {
   const { email } = location.state;
   const navigate = useNavigate();
 
-  const handleDiplayProducts = async () => {
-    try {
-      const res = await axios.get("http://localhost:3001/api/getproducts/", {
-        email,
-      });
+  const [products, setProducts] = React.useState([]);
 
-      // populate the cards with the products
+  const handleDisplayProducts = async () => {
+    try {
+      const apiUrl = `http://localhost:3001/api/getproducts/${email}`;
+      console.log(apiUrl);
+      const res = await axios.get(apiUrl);
+  
       console.log("Products fetched successfully");
       console.log(res.data);
+      setProducts(res.data);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
   };
+  
 
   const handleLogout = async () => {
     try {
@@ -41,14 +44,9 @@ const SellerHomepage = () => {
     console.log(productName, productPrice);
 
     const data = { name: productName, price: productPrice, selleremail: email };
-    console.log(data);
 
     try {
-      await axios
-        .post("http://localhost:3001/api/addproduct", data)
-        .then((res) => {
-          console.log(res);
-        });
+      await axios.post("http://localhost:3001/api/addproduct", data);
       alert("Product added successfully");
     } catch (error) {
       console.error("Error adding product:", error);
@@ -103,23 +101,24 @@ const SellerHomepage = () => {
             </form>
           </div>
         </div>
+
         <div>
           <h2>Your products</h2>
-          {/* Displaying all products that this particular user has in the products table in the form of cards when clicking on the display products button */}
-          <button className="btn btn-primary" onClick={handleDiplayProducts}>
-            Display all producs
+          <button className="btn btn-primary" onClick={handleDisplayProducts}>
+            Display all products
           </button>
-          {/* div containing cards which are populated by the  handleDiplayProducts function */}
           <div className="row justify-content-center">
-            <div className="col-md-4">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Product Name</h5>
-                  <p className="card-text">Product Price</p>
-                  <button className="btn btn-danger">Delete</button>
+            {products.map((product, index) => (
+              <div key={index} className="col-md-4">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">{product.name}</h5>
+                    <p className="card-text">Price: {product.price}</p>
+                    <button className="btn btn-danger">Delete</button>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
