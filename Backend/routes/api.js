@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Seller = require("../models/seller");
 const Testimonial = require("../models/testimonial");
+const Product = require("../models/product");
 
 // Route to get all service providers of a specific service type
 router.get("/getallserviceproviders/:servicetype", async (req, res) => {
@@ -84,8 +85,9 @@ router.post("/addtocart", async (req, res) => {
 //Route to add a product
 router.post("/addproduct", async (req, res) => {
   try {
-    const { name, price, sellerId } = req.body;
-    const product = await Product.create({ name, price, seller: sellerId });
+    const { name, price } = req.body;
+    console.log(name, price);
+    const product = await Product.create({ name, price });
     res.status(201).json(product);
   } catch (error) {
     console.error("Error adding product:", error);
@@ -104,6 +106,17 @@ router.put("/addproductimage", async (req, res) => {
   } catch (error) {
     console.error("Error adding image to product:", error);
     res.status(500).json({ error: "Failed to add image to product" });
+  }
+});
+
+//Route to get a partiucal customer by email
+router.get("/getcustomer/:email", async (req, res) => {
+  try {
+    const customer = await Customer.findOne({ email: req.params.email });
+    res.status(200).json(customer);
+  } catch (error) {
+    console.error("Error fetching customer:", error);
+    res.status(500).json({ error: "Failed to fetch customer" });
   }
 });
 

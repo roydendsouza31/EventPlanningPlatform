@@ -21,15 +21,12 @@ const SellerHomepage = () => {
     e.preventDefault();
     const productName = document.getElementById("productName").value;
     const productPrice = document.getElementById("productPrice").value;
-    const sellerID = sessionStorage.getItem("sellerID");
 
-    console.log(productName, productPrice, sellerID);
+    console.log(productName, productPrice);
 
     const formData = new FormData();
     formData.append("name", productName);
     formData.append("price", productPrice);
-    formData.append("sellerId", sellerID);
-    console.log(formData);
 
     try {
       await axios.post("http://localhost:3001/api/addproduct", formData, {
