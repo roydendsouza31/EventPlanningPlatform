@@ -37,8 +37,11 @@ const Login = ({ onLogin }) => {
         .post("http://localhost:3001/sellerlogin", user)
         .then((res) => {
           if (res.status === 200) {
+            console.log(res.data);
+            const sellerEmail = res.data.email;
+            console.log(sellerEmail);
             onLogin();
-            navigate("/sellerHomepage");
+            navigate("/sellerhomepage", { state: { email: sellerEmail } }); // Pass email as state to SellerHomepage
           } else {
             alert("Seller not found. Please signup.");
           }

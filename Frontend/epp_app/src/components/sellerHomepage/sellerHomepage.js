@@ -3,8 +3,11 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import logo from "./assets/logo.png";
+import { useLocation } from "react-router-dom";
 
 const SellerHomepage = () => {
+  const location = useLocation();
+  const { email } = location.state;
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -24,16 +27,15 @@ const SellerHomepage = () => {
 
     console.log(productName, productPrice);
 
-    const formData = new FormData();
-    formData.append("name", productName);
-    formData.append("price", productPrice);
+    const data = { name: productName, price: productPrice, selleremail: email };
+    console.log(data);
 
     try {
-      await axios.post("http://localhost:3001/api/addproduct", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios
+        .post("http://localhost:3001/api/addproduct", data)
+        .then((res) => {
+          console.log(res);
+        });
       alert("Product added successfully");
     } catch (error) {
       console.error("Error adding product:", error);
