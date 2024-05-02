@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 import Signup from "./components/signup/signup";
-import Navbar from "./components/navbar/navbar";
 import Homepage from "./components/homepage/homepage";
 import Login from "./components/login/login";
 import SellerSignup from "./components/sellerRegistration/sellerSignup";
@@ -19,9 +18,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Navbar /> */}
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Landingpage />} />
           <Route
             exact
             path="/Homepage"
@@ -30,7 +29,6 @@ function App() {
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/sellersignup" element={<SellerSignup />} />
-          <Route path="/" element={<Landingpage />} />
           <Route
             path="/serviceproviders/:serviceType"
             element={<ServiceProvidersPage />}
