@@ -1,4 +1,3 @@
-// Home page for seller
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +8,15 @@ const SellerHomepage = () => {
   const location = useLocation();
   const { email } = location.state;
   const navigate = useNavigate();
+
+  const handleDiplayProducts = async () => {
+    try {
+      await axios.post("http://localhost:3001/api/getproducts", { email });
+      // populate the cards with the products
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -56,19 +64,60 @@ const SellerHomepage = () => {
           </a>
         </nav>
       </header>
-      <h1>Welcome Seller</h1>
-
-      {/* form section to add a new product to the products table  */}
-      <form className="add-product-form">
-        <h2>Add a new product</h2>
-        <label htmlFor="productName">Product Name</label>
-        <input type="text" id="productName" name="productName" />
-        <label htmlFor="productPrice">Product Price</label>
-        <input type="text" id="productPrice" name="productPrice" />
-        <button type="submit" onClick={addProduct}>
-          Add Product
-        </button>
-      </form>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-md-8">
+            <h1 className="text-center mb-5">Welcome Seller</h1>
+            <form onSubmit={addProduct}>
+              <h2>Add a new product</h2>
+              <div className="mb-3">
+                <label htmlFor="productName" className="form-label">
+                  Product Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="productName"
+                  name="productName"
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="productPrice" className="form-label">
+                  Product Price
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="productPrice"
+                  name="productPrice"
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Add Product
+              </button>
+            </form>
+          </div>
+        </div>
+        <div>
+          <h2>Your products</h2>
+          {/* Displaying all products that this particular user has in the products table in the form of cards when clicking on the display products button */}
+          <button className="btn btn-primary" onClick={handleDiplayProducts}>
+            Display all producs
+          </button>
+          {/* div containing cards which are populated by the  handleDiplayProducts function */}
+          <div className="row justify-content-center">
+            <div className="col-md-4">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Product Name</h5>
+                  <p className="card-text">Product Price</p>
+                  <button className="btn btn-danger">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
