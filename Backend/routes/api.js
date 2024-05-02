@@ -108,8 +108,9 @@ router.get("/getcustomer/:email", async (req, res) => {
 
 //Route to display all products of a particular seller based on his email
 router.get("/getproducts/:email", async (req, res) => {
+  console.log("Executed");
   try {
-    console.log(req.email);
+    console.log(req.params.email);
     const products = await Product.find({ selleremail: req.params.email });
     res.status(200).json(products);
   } catch (error) {

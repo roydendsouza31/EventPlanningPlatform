@@ -11,8 +11,13 @@ const SellerHomepage = () => {
 
   const handleDiplayProducts = async () => {
     try {
-      await axios.post("http://localhost:3001/api/getproducts", { email });
+      const res = await axios.get("http://localhost:3001/api/getproducts/", {
+        email,
+      });
+
       // populate the cards with the products
+      console.log("Products fetched successfully");
+      console.log(res.data);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
