@@ -38,7 +38,7 @@ const Login = ({ onLogin }) => {
         .then((res) => {
           if (res.status === 200) {
             onLogin();
-            navigate("/homepage");
+            navigate("/sellerHomepage");
           } else {
             alert("Seller not found. Please signup.");
           }

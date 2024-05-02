@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import CustomerSignup from "./components/customerSignup/customerSignup";
 import CustomerHomepage from "./components/customerHomepage/customerHomepage";
+import SellerHomepage from "./components/sellerHomepage/sellerHomepage";
 import Login from "./components/customerLogin/customerLogin";
 import SellerSignup from "./components/sellerSignup/sellerSignup";
 import SellerLogin from "./components/sellerLogin/sellerLogin";
@@ -39,6 +40,17 @@ function App() {
                 <CustomerHomepage />
               ) : (
                 <Navigate to="/customerlogin" />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/sellerhomepage"
+            element={
+              authenticated ? (
+                <SellerHomepage />
+              ) : (
+                <Navigate to="/sellerlogin" />
               )
             }
           />
