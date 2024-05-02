@@ -2,16 +2,17 @@ body {
   font-family: 'Arial', sans-serif;
 }
 .cart-container {
+  background-color: #A0E9FF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 20px;
   margin: 20px;
   width: 60%;
   min-height: auto;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
 }
 .cart-items {
   width: 90%;
@@ -19,17 +20,75 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 8px;
+  margin-left: 30px;
 }
 .cart-item {
+  background-color: #CDF5FD;
   display: flex;
   justify-content: space-between;
   padding: 5px;
-  margin-top: 4px;
+  margin-top: 10px;
   margin-bottom: 10px;
+  padding: 10px;
   height: 80px;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 5px 12px;
 }
+
+
+
+.coupons {
+  border-radius: 7px;
+}
+
+.coupons form {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 10px;
+  padding: 10px;
+}
+
+.input_field {
+  width: 200px;
+  height: 36px;
+  padding: 0 0 0 12px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input_field:focus {
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 0px 2px #242424;
+  background-color: transparent;
+}
+
+.coupons form button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 18px;
+  gap: 10px;
+  width: 100%;
+  height: 36px;
+  background: linear-gradient(180deg, #4480FF 0%, #115DFC 50%, #0550ED 100%);
+  box-shadow: 0px 0.5px 0.5px #EFEFEF, 0px 1px 0.5px rgba(239, 239, 239, 0.5);
+  border-radius: 5px;
+  border: 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+}
+
+
 .summary-container {
   width: 35%;
   margin-left: 5%;
@@ -40,8 +99,11 @@ body {
   gap: 20px;
 }
 .summary, .customer-support, .suggestions {
+  background-color: #A0E9FF;
   border: 1px solid #ddd;
-  padding: 20px;
+  padding: 25px;
+  border-radius: 10px;
+  margin-left: -10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .summary h2, .customer-support h2, .suggestions h2 {

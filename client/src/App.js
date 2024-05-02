@@ -38,7 +38,8 @@ function App() {
     }
   };
 
-  const applyGiftCode = () => {
+  const applyGiftCode = (event) => {
+      event.preventDefault();
     if (giftCode in giftCodes) {
       setDiscount(giftCodes[giftCode]);
       console.log('Gift code applied');
@@ -66,8 +67,13 @@ function App() {
             </div>
             </div>
           ))}
-          <input type="text" id="gift-code" name="gift-code" value={giftCode} onChange={e => setGiftCode(e.target.value)} />
-          <button className="apply" onClick={applyGiftCode}>Apply Gift Code</button>
+           <div className="card coupons">
+            <label className="title"></label>
+            <form className="form">
+              <input type="text" placeholder="Apply your coupons here" className="input_field" value={giftCode} onChange={e => setGiftCode(e.target.value)} />
+              <button onClick={applyGiftCode}>Apply</button>
+            </form>
+          </div>
         </div>
       </div>
 
