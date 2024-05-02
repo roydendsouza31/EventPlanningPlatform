@@ -1,6 +1,6 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-color: rgba(0, 169, 255, 0.8);
+  /* background-color: rgba(0, 169, 255, 0.8); */
 }
 .cart-container {
   background-color: #A0E9FF;
@@ -13,7 +13,9 @@ body {
   margin: 20px;
   width: 60%;
   min-height: auto;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+  background: linear-gradient(180deg, #dcf3ff 0%, #FFFFFF 10.21%);
+  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
 }
 .cart-items {
   width: 90%;
@@ -25,7 +27,6 @@ body {
   margin-left: 30px;
 }
 .cart-item {
-  background-color: #CDF5FD;
   display: flex;
   justify-content: space-between;
   padding: 5px;
@@ -35,7 +36,9 @@ body {
   height: 80px;
   width: 100%;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 5px 12px;
+  background: linear-gradient(180deg, #e7f7ff 0%, #FFFFFF 80.21%);
+  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09);
+  border-radius: 16px;
 }
 
 .check-box{
@@ -56,7 +59,7 @@ body {
 }
 
 .input_field {
-  width: 200px;
+  width: 300px;
   height: 36px;
   padding: 0 0 0 12px;
   border-radius: 5px;
@@ -65,6 +68,8 @@ body {
   filter: drop-shadow(0px 1px 0px #efefef)
     drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
   transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
 }
 
 .input_field:focus {
@@ -123,6 +128,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
 }
 .summary, .customer-support, .suggestions {
   background-color: #A0E9FF;
@@ -130,13 +136,15 @@ body {
   padding: 25px;
   border-radius: 10px;
   margin-left: -10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background: linear-gradient(180deg, #d3f0ff 0%, #FFFFFF 30.21%);
+  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
 }
 .summary h2, .customer-support h2, .suggestions h2 {
   margin-top: 0;
 }
 h1 {
-  text-decoration: underline;
+  margin-left: 20px;
 }
 
 .parent-container {
