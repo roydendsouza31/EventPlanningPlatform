@@ -3,6 +3,14 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./homepage.css";
 import { useEffect } from "react";
+import logo from "./assets/logo.png";
+import camera from "./assets/camera.png";
+import catering from "./assets/catering.png";
+import decorator from "./assets/decoration.png";
+import emcee from "./assets/emcee.png";
+import makeup from "./assets/makeup.png";
+import music from "./assets/music.png";
+import venue from "./assets/venue.png";
 
 const ServiceProvidersPage = () => {
   const [topServiceProviders, setTopServiceProviders] = useState([]);
@@ -11,7 +19,7 @@ const ServiceProvidersPage = () => {
     const fetchTopServiceProviders = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/gettopserviceproviders"
+          "http://localhost:3001/api/gettopserviceproviders"
         );
         setTopServiceProviders(response.data);
       } catch (error) {
@@ -57,11 +65,7 @@ const CustomerHomepage = () => {
   return (
     <div className="homepage">
       <header className="header">
-        <img
-          src="/Users/royden/Desktop/EventPlanningPlatform/Frontend/epp_app/src/components/customerHomepage/logo.png"
-          alt="Logo"
-          className="logo"
-        />
+        <img src={logo} height={100} alt="Logo" className="logo mx-5" />
         <nav className="nav-links">
           <a href="/customerhomepage">Cart</a>
           <a href="/customerhomepage">Order History</a>
@@ -96,24 +100,58 @@ const CustomerHomepage = () => {
         <div className="suppliercategorybox">
           <div className="rowwise">
             <Link
+              style={{ textDecoration: "none" }}
               to="/serviceproviders/photographer_videographer"
               className="suppliericon"
             >
+              <img
+                src={camera}
+                height={100}
+                alt="camera"
+                className="logo mx-5"
+              />
               <div className="image-placeholder"></div>
               <p className="category">PHOTOGRAPHER</p>
             </Link>
-            <Link to="/serviceproviders/venue" className="suppliericon">
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/serviceproviders/venue"
+              className="suppliericon"
+            >
+              <img
+                src={venue}
+                height={100}
+                alt="camera"
+                className="logo mx-5"
+              />
               <div className="image-placeholder"></div>
               <p className="category">VENUE PLANNERS</p>
             </Link>
             <Link
+              style={{ textDecoration: "none" }}
               to="/serviceproviders/makeup_hairstylish"
               className="suppliericon"
             >
+              <img
+                src={makeup}
+                height={100}
+                alt="camera"
+                className="logo mx-5"
+              />
               <div className="image-placeholder"></div>
               <p className="category">MAKEUP ARTIST</p>
             </Link>
-            <Link to="/serviceproviders/decorator" className="suppliericon">
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/serviceproviders/decorator"
+              className="suppliericon"
+            >
+              <img
+                src={decorator}
+                height={100}
+                alt="camera"
+                className="logo mx-5"
+              />
               <div className="image-placeholder"></div>
               <p className="category">DECORATOR</p>
             </Link>
@@ -121,15 +159,45 @@ const CustomerHomepage = () => {
           {showMore && (
             <>
               <div className="rowwise">
-                <Link to="/serviceproviders/Music" className="suppliericon">
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to="/serviceproviders/Music"
+                  className="suppliericon"
+                >
+                  <img
+                    src={music}
+                    height={100}
+                    alt="camera"
+                    className="logo mx-5"
+                  />
                   <div className="image-placeholder"></div>
                   <p className="category">MUSIC</p>
                 </Link>
-                <Link to="/serviceproviders/emcee" className="suppliericon">
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to="/serviceproviders/emcee"
+                  className="suppliericon"
+                >
+                  <img
+                    src={emcee}
+                    height={100}
+                    alt="camera"
+                    className="logo mx-5"
+                  />
                   <div className="image-placeholder"></div>
                   <p className="category">EMCEE</p>
                 </Link>
-                <Link to="/serviceproviders/Catering" className="suppliericon">
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to="/serviceproviders/Catering"
+                  className="suppliericon"
+                >
+                  <img
+                    src={catering}
+                    height={100}
+                    alt="camera"
+                    className="logo mx-5"
+                  />
                   <div className="image-placeholder"></div>
                   <p className="category">CATERING</p>
                 </Link>
@@ -143,6 +211,7 @@ const CustomerHomepage = () => {
         <div className="titlerow">
           <h2>Top Sellers</h2>
         </div>
+        <ServiceProvidersPage />
       </div>
 
       <footer className="footer">

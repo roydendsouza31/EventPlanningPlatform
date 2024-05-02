@@ -1,4 +1,4 @@
-import logo from "./logo.png"; // Adjust the path to match the actual location
+import logo from "./logo.png";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
