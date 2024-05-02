@@ -5,7 +5,9 @@
 }
 
 .founder-card {
-  background-color: cadetblue;
+  background: linear-gradient(180deg,#00A9FF 0%,#FFFFFF 30%);
+  box-shadow: 0px 187px 75px rgba(0,0,0,0.01), 0px 105px 63px rgba(0,0,0,0.05);
+  
   flex: 0 1 calc(20% - 20px);
   margin-bottom: 20px;
   text-align: center; /* Align text to the center */
