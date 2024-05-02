@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./homepage.css";
 import { useEffect } from "react";
 import logo from "./assets/logo.png";
@@ -99,110 +99,96 @@ const CustomerHomepage = () => {
         </div>
         <div className="suppliercategorybox">
           <div className="rowwise">
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/serviceproviders/photographer_videographer"
-              className="suppliericon"
+            <div
+              className="suppliericon text-center"
+              onClick={() =>
+                navigate("/serviceproviders/photographer_videographer")
+              }
             >
               <img
                 src={camera}
                 height={100}
-                alt="camera"
+                alt="Photographer"
                 className="logo mx-5"
               />
-              <div className="image-placeholder"></div>
-              <p className="category">PHOTOGRAPHER</p>
-            </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/serviceproviders/venue"
-              className="suppliericon"
+              <p className="category">Photographer</p>
+            </div>
+            <div
+              className="suppliericon text-center"
+              onClick={() => navigate("/serviceproviders/venue")}
             >
               <img
                 src={venue}
                 height={100}
-                alt="camera"
+                alt="Venue Planner"
                 className="logo mx-5"
               />
-              <div className="image-placeholder"></div>
-              <p className="category">VENUE PLANNERS</p>
-            </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/serviceproviders/makeup_hairstylish"
-              className="suppliericon"
+              <p className="category">Venue Planner</p>
+            </div>
+            <div
+              className="suppliericon text-center"
+              onClick={() => navigate("/serviceproviders/makeup_hairstylish")}
             >
               <img
                 src={makeup}
                 height={100}
-                alt="camera"
+                alt="Makeup Artist"
                 className="logo mx-5"
               />
-              <div className="image-placeholder"></div>
-              <p className="category">MAKEUP ARTIST</p>
-            </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/serviceproviders/decorator"
-              className="suppliericon"
+              <p className="category">Makeup Artist</p>
+            </div>
+            <div
+              className="suppliericon text-center"
+              onClick={() => navigate("/serviceproviders/decorator")}
             >
               <img
                 src={decorator}
                 height={100}
-                alt="camera"
+                alt="Decorator"
                 className="logo mx-5"
               />
-              <div className="image-placeholder"></div>
-              <p className="category">DECORATOR</p>
-            </Link>
+              <p className="category">Decorator</p>
+            </div>
           </div>
           {showMore && (
-            <>
-              <div className="rowwise">
-                <Link
-                  style={{ textDecoration: "none" }}
-                  to="/serviceproviders/Music"
-                  className="suppliericon"
-                >
-                  <img
-                    src={music}
-                    height={100}
-                    alt="camera"
-                    className="logo mx-5"
-                  />
-                  <div className="image-placeholder"></div>
-                  <p className="category">MUSIC</p>
-                </Link>
-                <Link
-                  style={{ textDecoration: "none" }}
-                  to="/serviceproviders/emcee"
-                  className="suppliericon"
-                >
-                  <img
-                    src={emcee}
-                    height={100}
-                    alt="camera"
-                    className="logo mx-5"
-                  />
-                  <div className="image-placeholder"></div>
-                  <p className="category">EMCEE</p>
-                </Link>
-                <Link
-                  style={{ textDecoration: "none" }}
-                  to="/serviceproviders/Catering"
-                  className="suppliericon"
-                >
-                  <img
-                    src={catering}
-                    height={100}
-                    alt="camera"
-                    className="logo mx-5"
-                  />
-                  <div className="image-placeholder"></div>
-                  <p className="category">CATERING</p>
-                </Link>
+            <div className="rowwise">
+              <div
+                className="suppliericon text-center"
+                onClick={() => navigate("/serviceproviders/Music")}
+              >
+                <img
+                  src={music}
+                  height={100}
+                  alt="Music"
+                  className="logo mx-5"
+                />
+                <p className="category">Music</p>
               </div>
-            </>
+              <div
+                className="suppliericon text-center"
+                onClick={() => navigate("/serviceproviders/emcee")}
+              >
+                <img
+                  src={emcee}
+                  height={100}
+                  alt="Emcee"
+                  className="logo mx-5"
+                />
+                <p className="category">Emcee</p>
+              </div>
+              <div
+                className="suppliericon text-center"
+                onClick={() => navigate("/serviceproviders/Catering")}
+              >
+                <img
+                  src={catering}
+                  height={100}
+                  alt="Catering"
+                  className="logo mx-5"
+                />
+                <p className="category">Catering</p>
+              </div>
+            </div>
           )}
         </div>
       </div>
